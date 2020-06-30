@@ -4,7 +4,7 @@
     flex-direction: column;
     width: 40vw;
     border: 1px solid black;
-    position: absolute;
+    position: fixed;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
@@ -87,21 +87,28 @@
     font-size: 14px;
   }
 
-.contentDiv{
-    height: 50px;
-    border: none;
-    outline: none;
+[contenteditable=true]:empty:before{
+  content: attr(placeholder);
+  pointer-events: none;
+  display: block; 
+  color: gray;
 }
 
-.contentDiv:empty:not(:focus):before {
-    content: attr(data-placeholder)
-  }
+.contentDiv{
+    height: auto;
+    border: none;
+    outline: none;
+    text-align: left;
+    color:#2e3134;
+    font-family: "Open Sans";
+    min-height: 100px;
+}
 
 .closeModalBtn{
     position: absolute;
     top: 15px;
     right: 35px;
-    color: #f1f1f1;
+    color: #ccc;
     font-size: 40px;
     font-weight: bold;
     transition: 0.3s;

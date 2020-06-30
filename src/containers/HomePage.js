@@ -4,7 +4,7 @@ import classes from './HomePage.css';
 import LfrmMImg from '../assets/images/LfrmM.png';
 import PostModal from './PostModal';
 import Modal from '../components/UI/Modal';
-
+import defaultProfilePic from '../assets/images/defaultProfilePic.png';
 
 class HomePage extends Component {
 
@@ -32,15 +32,19 @@ class HomePage extends Component {
     postingCancelHandler = () => {
         this.setState({postingNewPost:false});
     }
+
     postingHandler = () => {
         this.setState({postingNewPost:true});
     }
 
+    componentDidMount(){
+        document.getElementById('editable').focus();
+    } 
+
     render(){
         var modal=null;
-        console.log(this.state.postingNewPost);
         if(this.state.postingNewPost){
-            modal=<PostModal postingPost={this.state.postingNewPost}/>
+            modal=<PostModal parentMethod={this.postingCancelHandler} postingPost={this.state.postingNewPost}/>
         }
 
         return(
@@ -86,14 +90,45 @@ class HomePage extends Component {
                         </div>
                     </div>
                     <div className={classes.middle}>
-                        <div className={classes.postLearning}>
-                            <h3 style={{color:'gray'}}>Want to share your Learning!!</h3>
-                            <button onClick={this.postingHandler}>New Post</button>
+                        <div className={classes.postLearning} onClick={this.postingHandler}>
+                            <div className={classes.profileDetails}>
+                                <img src={defaultProfilePic}  className={classes.profileImage}/>
+                                <span style={{marginLeft:"10px",marginTop:"16px"}}>Profile Name</span>
+                            </div>
+                            <div 
+                                className={classes.contentDiv} 
+                                id="editable" 
+                                contentEditable = "true" 
+                                placeholder="Wanna share your learning...Let's post it " 
+                                style={{paddingLeft: '10px'}}>
+                            </div>
+                             <button className={classes.postBtn} onClick={this.postingHandler} disabled>Post</button>
                             {modal}
                         </div>
-                            sdf<br></br>
-                            sdf<br></br>
-                            sdf<br></br>
+                        <div className={classes.userPosts}>
+                            <div className={classes.profileDetails}>
+                                <img src={defaultProfilePic}  className={classes.profileImage}/>
+                                <span style={{marginLeft:"10px",marginTop:"16px"}}>Profile Name</span>
+                            </div>
+                            <div>
+                                <h4 style={{marginTop: "15px", marginBottom: "3px", textAlign: 'left', paddingLeft: '10px'}}>
+                                    <span className={classes.redFont}>#Mistake</span>
+                                </h4>
+                                <label style={{paddingLeft: '10px'}}>This is my Mistake</label>
+                            </div>
+                            <div>
+                                <h4 style={{marginTop: "15px", marginBottom: "3px", textAlign: 'left', paddingLeft: '10px'}}>
+                                    <span className={classes.greenFont}>#Learning</span>
+                                </h4>
+                                <label style={{paddingLeft: '10px'}}>This is my Learning</label>
+                            </div>
+                            <div className={classes.postReactionsDiv}>
+                                <button className={classes.postReactionsBtns}>Learned</button>
+                                <button className={classes.postReactionsBtns}>Appreciate</button>
+                                <button className={classes.postReactionsBtns}> &#10150; Share</button>
+                                <button className={classes.postReactionsBtns} style={{float:'right'}}>Comment</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </Auxillary>
