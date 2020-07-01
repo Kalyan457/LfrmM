@@ -130,6 +130,20 @@
     flex-direction: row;
 }
 
+.profilePicDiv{
+    float: left;
+    width: 50%;
+}
+
+.saveReportDiv{
+    float: right;
+    width: 45%;
+}
+
+.clear{
+    clear: both;
+}
+
 .contentDiv{
     height: auto;
     border: none;
@@ -159,13 +173,45 @@
 }
 
 .postReactionsDiv{
-    margin-top: 3%;
+    margin-top: 0%;
 }
+
+.postReactionsCountDiv{
+    border-bottom: 1px solid rgba(0,0,0,0.15);
+    position: relative;
+    background: #fff;
+    margin-top: 10px;
+}
+
+.postReactionsCount{
+    padding: 1%;
+    color: gray;
+    font-size: 13px;
+}
+
+/* .postReactionsCountDiv::after{
+    background: linear-gradient(to right, rgb(60, 154, 84) 20%,rgb(244, 157, 13) 40%,rgb(219, 29, 54) 100%);
+  position: absolute;
+  content: '';
+  height: 1px;
+  right: 0;
+  left: 0;
+  top: 0;
+} */
 
 .postReactionsBtns{
     background:none;
     border: none;
-    margin-bottom: 2%;
+    margin-bottom: 1%;
     font-size: 13px;
     color: gray;
+}
+
+.reportPostBtn{
+    background:none;
+    border: none;
+    margin-bottom: 1%;
+    font-size: 13px;
+    color: gray;
+    float: right;
 }

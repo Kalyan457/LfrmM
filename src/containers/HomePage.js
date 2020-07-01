@@ -5,6 +5,8 @@ import LfrmMImg from '../assets/images/LfrmM.png';
 import PostModal from './PostModal';
 import Modal from '../components/UI/Modal';
 import defaultProfilePic from '../assets/images/defaultProfilePic.png';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShare,faCommentAlt,faLightbulb } from '@fortawesome/free-solid-svg-icons';
 
 class HomePage extends Component {
 
@@ -107,6 +109,42 @@ class HomePage extends Component {
                         </div>
                         <div className={classes.userPosts}>
                             <div className={classes.profileDetails}>
+                                <div className={classes.profilePicDiv}>
+                                    <img src={defaultProfilePic}  className={classes.profileImage}/>
+                                    <span style={{marginLeft:"10px",marginTop:"16px",display:'inline'}}>Profile Name</span>                                </div>
+                                <div className={classes.saveReportDiv}>
+                                    <button className={classes.reportPostBtn}>Report</button>
+                                    <button className={classes.reportPostBtn}>Save</button>
+                                </div>
+                                <div className={classes.clear}></div>
+                            </div>
+                            <div>
+                                <h4 style={{marginTop: "15px", marginBottom: "3px", textAlign: 'left', paddingLeft: '10px'}}>
+                                    <span className={classes.redFont}>#Mistake</span>
+                                </h4>
+                                <label style={{paddingLeft: '10px'}}>This is my Mistake</label>
+                            </div>
+                            <div>
+                                <h4 style={{marginTop: "15px", marginBottom: "3px", textAlign: 'left', paddingLeft: '10px'}}>
+                                    <span className={classes.greenFont}>#Learning</span>
+                                </h4>
+                                <label style={{paddingLeft: '10px'}}>This is my Learning</label>
+                            </div>
+                            <div className={classes.postReactionsCountDiv}>
+                                <span className={classes.postReactionsCount}>5 &#128161;</span>
+                                <span className={classes.postReactionsCount}>10 &#128079;</span>
+                                <span className={classes.postReactionsCount}>2 <FontAwesomeIcon icon={faShare} color="rgb(244,200,7)" size="xs" /></span>
+                                <span className={classes.postReactionsCount}>5 <FontAwesomeIcon icon={faCommentAlt} color="gray" size="xs" /></span>
+                            </div>
+                            <div className={classes.postReactionsDiv}>
+                                <button className={classes.postReactionsBtns}>&#128161; Learned</button>
+                                <button className={classes.postReactionsBtns}>&#x1f44f; Appreciate</button>
+                                <button className={classes.postReactionsBtns}><FontAwesomeIcon icon={faShare} color="rgb(244,200,7)" size="xs" /> Share</button>
+                                <button className={classes.postReactionsBtns}><FontAwesomeIcon icon={faCommentAlt} color="gray" size="xs" /> Comment</button>
+                            </div>
+                        </div>
+                        <div className={classes.userPosts}>
+                            <div className={classes.profileDetails}>
                                 <img src={defaultProfilePic}  className={classes.profileImage}/>
                                 <span style={{marginLeft:"10px",marginTop:"16px"}}>Profile Name</span>
                             </div>
@@ -122,11 +160,47 @@ class HomePage extends Component {
                                 </h4>
                                 <label style={{paddingLeft: '10px'}}>This is my Learning</label>
                             </div>
+                            <div className={classes.postReactionsCountDiv}>
+                                <span className={classes.postReactionsCount}>5 &#128161;</span>
+                                <span className={classes.postReactionsCount}>10 &#128079;</span>
+                                <span className={classes.postReactionsCount}>2 <FontAwesomeIcon icon={faShare} color="rgb(244,200,7)" size="xs" /></span>
+                                <span className={classes.postReactionsCount}>5 <FontAwesomeIcon icon={faCommentAlt} color="gray" size="xs" /></span>
+                            </div>
                             <div className={classes.postReactionsDiv}>
-                                <button className={classes.postReactionsBtns}>Learned</button>
-                                <button className={classes.postReactionsBtns}>Appreciate</button>
-                                <button className={classes.postReactionsBtns}> &#10150; Share</button>
-                                <button className={classes.postReactionsBtns} style={{float:'right'}}>Comment</button>
+                                <button className={classes.postReactionsBtns}>&#128161; Learned</button>
+                                <button className={classes.postReactionsBtns}>&#x1f44f; Appreciate</button>
+                                <button className={classes.postReactionsBtns}><FontAwesomeIcon icon={faShare} color="rgb(244,200,7)" size="xs" /> Share</button>
+                                <button className={classes.postReactionsBtns}><FontAwesomeIcon icon={faCommentAlt} color="gray" size="xs" /> Comment</button>
+                            </div>
+                        </div>
+                        <div className={classes.userPosts}>
+                            <div className={classes.profileDetails}>
+                                <img src={defaultProfilePic}  className={classes.profileImage}/>
+                                <span style={{marginLeft:"10px",marginTop:"16px"}}>Profile Name</span>
+                            </div>
+                            <div>
+                                <h4 style={{marginTop: "15px", marginBottom: "3px", textAlign: 'left', paddingLeft: '10px'}}>
+                                    <span className={classes.redFont}>#Mistake</span>
+                                </h4>
+                                <label style={{paddingLeft: '10px'}}>This is my Mistake</label>
+                            </div>
+                            <div>
+                                <h4 style={{marginTop: "15px", marginBottom: "3px", textAlign: 'left', paddingLeft: '10px'}}>
+                                    <span className={classes.greenFont}>#Learning</span>
+                                </h4>
+                                <label style={{paddingLeft: '10px'}}>This is my Learning</label>
+                            </div>
+                            <div className={classes.postReactionsCountDiv}>
+                                <span className={classes.postReactionsCount}>5 &#128161;</span>
+                                <span className={classes.postReactionsCount}>10 &#128079;</span>
+                                <span className={classes.postReactionsCount}>2 <FontAwesomeIcon icon={faShare} color="rgb(244,200,7)" size="xs" /></span>
+                                <span className={classes.postReactionsCount}>5 <FontAwesomeIcon icon={faCommentAlt} color="gray" size="xs" /></span>
+                            </div>
+                            <div className={classes.postReactionsDiv}>
+                                <button className={classes.postReactionsBtns}>&#128161; Learned</button>
+                                <button className={classes.postReactionsBtns}>&#x1f44f; Appreciate</button>
+                                <button className={classes.postReactionsBtns}><FontAwesomeIcon icon={faShare} color="rgb(244,200,7)" size="xs" /> Share</button>
+                                <button className={classes.postReactionsBtns}><FontAwesomeIcon icon={faCommentAlt} color="gray" size="xs" /> Comment</button>
                             </div>
                         </div>
                     </div>
