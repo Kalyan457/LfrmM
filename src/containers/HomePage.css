@@ -1,4 +1,4 @@
-.body{
+body{
     background: #f8f9fa;
 }
 
@@ -128,17 +128,9 @@
 .profileDetails{
     display: flex;
     flex-direction: row;
+    overflow: hidden;
 }
 
-.profilePicDiv{
-    float: left;
-    width: 50%;
-}
-
-.saveReportDiv{
-    float: right;
-    width: 45%;
-}
 
 .clear{
     clear: both;
@@ -208,10 +200,78 @@
 }
 
 .reportPostBtn{
+    float:right;
     background:none;
     border: none;
     margin-bottom: 1%;
     font-size: 13px;
     color: gray;
-    float: right;
 }
+
+.savePostBtn{
+    float:right;
+    font-size: 13px;
+    background-color: transparent;
+    /* padding-left: 2%;
+    padding-right: 2%;
+    margin-right: 5%; */
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-right: 6px;
+    border: 1px solid rgb(60, 154, 84);
+    color: rgb(60, 154, 84);
+    cursor: pointer;
+    border-radius: 15px;
+    margin-top: 1%;
+}
+
+.savePostBtn:hover{
+    background-color: rgb(60, 154, 84);
+    color: white;
+}
+
+.reportPostBtn{
+    float:right;
+    font-size: 13px;
+    background-color: transparent;
+    /* padding-left: 22%;
+    padding-right: 22%;
+    margin-right: 2%; */
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-right: 12px;
+    border: 1px solid rgb(60, 154, 84);
+    color: rgb(60, 154, 84);
+    cursor: pointer;
+    border-radius: 15px;
+}
+  
+  .dropdown {
+    position: relative;
+    float: right;
+    margin-top: 1%;
+    z-index: 100;
+  }
+  
+  .dropdownContent {
+    position: fixed;
+    margin-top: 20px;
+    display: none;
+    background-color: #ffffff;
+    z-index: 500;
+    border: 1px solid #eee;
+  }
+  
+  .dropdownContent a {
+    color: #2e3134;
+    padding: 5px 5px;
+    text-decoration: none;
+    display: block;
+    z-index: 600;
+  }
+
+  .dropdownContent a:hover {background-color: #ddd;}
+  
+  .dropdown:hover .dropdownContent {display: block;}
+  
+  .dropdown:hover .dropbtn {background-color: #3e8e41;}
