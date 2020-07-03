@@ -47,6 +47,7 @@
     font-family: 'Open Sans';
     font-weight: 600;
     font-size: 14px;
+    outline: none;
 }
 
 .LoginBtn:hover {

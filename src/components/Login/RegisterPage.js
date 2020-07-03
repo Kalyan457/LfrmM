@@ -76,31 +76,37 @@ class RegisterPage extends Component {
                         <h2 style={{textAlign:'center'}}><span className={classes.yellowFont2}>Interests</span></h2>
                         <div className={classes.interestsDiv}>
                             <button 
+                                type="button"
                                 className={classes.interestButton} 
                                 value="1" 
                                 id="interest_btn_1"
                                 onClick={this.interestBtnHandler.bind(this)}>Coding</button>
                             <button 
+                                type="button"
                                 className={classes.interestButton} 
                                 value="2" 
                                 id="interest_btn_2"
                                 onClick={this.interestBtnHandler.bind(this)}>Algorithms</button>
                             <button 
+                                type="button"
                                 className={classes.interestButton} 
                                 value="3" 
                                 id="interest_btn_3"
                                 onClick={this.interestBtnHandler.bind(this)}>Web Development</button>
                             <button 
+                                type="button"
                                 className={classes.interestButton} 
                                 value="4" 
                                 id="interest_btn_4"
                                 onClick={this.interestBtnHandler.bind(this)}>Machine Learning</button>
                             <button 
+                                type="button"
                                 className={classes.interestButton} 
                                 value="5" 
                                 id="interest_btn_5"
                                 onClick={this.interestBtnHandler.bind(this)}>Cyber Security</button>
                             <button 
+                                type="button"
                                 className={classes.interestButton} 
                                 value="6" 
                                 id="interest_btn_6"

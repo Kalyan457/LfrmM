@@ -61,6 +61,7 @@
     cursor: pointer;
     border-radius: 5px;
     margin-top: 0px;
+    outline: none;
 }
 
 .interestButton:hover{
@@ -83,7 +84,7 @@
     font-size: 14px;
     float: right;
     margin-right: 6%;
-    
+    outline: none;
 }
 
 .registerBtn:hover {

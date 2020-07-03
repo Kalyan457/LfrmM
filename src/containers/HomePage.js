@@ -13,7 +13,8 @@ class HomePage extends Component {
     state={
         highlightedMenuId : 'menu_1',
         postingNewPost: false,
-        savePostState:[]
+        savePostState:[],
+        postReactions:[false,false,false,false],
     }
 
     menuItemClickHandler = (event) => {
@@ -72,6 +73,48 @@ class HomePage extends Component {
             }
             console.log(savePostStateCopy);
             this.setState({savePostState:savePostStateCopy});
+        }
+    };
+
+    postReactionsHandler = (event) => {
+        event.preventDefault();
+        var selectedBtnId=event.target.id;
+        if(selectedBtnId !== undefined){
+            var control = document.getElementById(selectedBtnId);
+            var reactionCountControl = document.getElementById("reactionsCount"+"_"+selectedBtnId);
+            var oldCount = reactionCountControl.innerText.split(" ")[0];
+            var reactionSymbol = reactionCountControl.innerText.split(" ")[1];
+            console.log(oldCount);
+            console.log(reactionSymbol);
+            var postReactionsCopy = this.state.postReactions.slice();
+            if(postReactionsCopy[selectedBtnId]==true){
+                control.style.color="gray";
+                control.style.backgroundColor="white";
+                postReactionsCopy[selectedBtnId]=false;
+                if(selectedBtnId!=3){
+                    var updatedCount = parseInt(oldCount)-1;
+                    reactionCountControl.innerText = updatedCount+" "+reactionSymbol;
+                }
+                else{
+                    document.getElementById("commentDivShowHide").style.display="none";
+                    document.getElementById("commentDivId").focus();
+                }
+            }
+            else{
+                control.style.color="rgb(60, 154, 84)";
+                control.style.backgroundColor="white";
+                control.style.fontWeight="bold"
+                if(selectedBtnId!=3){
+                    var updatedCount = parseInt(oldCount)+1;
+                    reactionCountControl.innerText = updatedCount+" "+reactionSymbol;
+                }
+                else{
+                    document.getElementById("commentDivShowHide").style.display="block";
+                    document.getElementById("commentDivId").focus();
+                }
+                postReactionsCopy[selectedBtnId]=true;
+            }
+            this.setState({postReactions:postReactionsCopy});
         }
     };
 
@@ -182,17 +225,60 @@ class HomePage extends Component {
                                 <label style={{paddingLeft: '10px'}}>This is my Learning</label>
                             </div>
                             <div className={classes.postReactionsCountDiv}>
-                                <span className={classes.postReactionsCount}>5 &#128161;</span>
-                                <span className={classes.postReactionsCount}>10 &#128079;</span>
-                                <span className={classes.postReactionsCount}>2 <FontAwesomeIcon icon={faShare} color="rgb(244,200,7)" size="xs" /></span>
-                                <span className={classes.postReactionsCount}>5 <FontAwesomeIcon icon={faCommentAlt} color="gray" size="xs" /></span>
+                                <span 
+                                    id="reactionsCount_0"
+                                    className={classes.postReactionsCount}>5 &#128161;</span>
+                                <span 
+                                    id="reactionsCount_1"
+                                    className={classes.postReactionsCount}>10 &#128079;</span>
+                                <span 
+                                    id="reactionsCount_2"
+                                    className={classes.postReactionsCount}>2 &#10150;</span>
+                                <span 
+                                    id="reactionsCount_3"
+                                    className={classes.postReactionsCount}>5 <FontAwesomeIcon icon={faCommentAlt} color="gray" size="xs" /></span>
                             </div>
                             <div className={classes.postReactionsDiv}>
-                                <button className={classes.postReactionsBtns}>&#128161; Learned</button>
-                                <button className={classes.postReactionsBtns}>&#x1f44f; Appreciate</button>
-                                <button className={classes.postReactionsBtns}><FontAwesomeIcon icon={faShare} color="rgb(244,200,7)" size="xs" /> Share</button>
-                                <button className={classes.postReactionsBtns}><FontAwesomeIcon icon={faCommentAlt} color="gray" size="xs" /> Comment</button>
+                                <button 
+                                    id="0"
+                                    onClick={this.postReactionsHandler.bind(this)}
+                                    className={classes.postReactionsBtns}>&#128161; Learned</button>
+                                <button 
+                                    id="1"
+                                    onClick={this.postReactionsHandler.bind(this)}
+                                    className={classes.postReactionsBtns}>&#x1f44f; Appreciate</button>
+                                <button 
+                                    id="2"
+                                    onClick={this.postReactionsHandler.bind(this)}
+                                    className={classes.postReactionsBtns}>&#10150; Share</button>
+                                <button 
+                                    id="3"
+                                    onClick={this.postReactionsHandler.bind(this)}
+                                    className={classes.postReactionsBtns}><FontAwesomeIcon icon={faCommentAlt} color="gray" size="xs" /> Comment</button>
                             </div>
+                            
+                            <div id="commentDivShowHide" className={classes.commentDivContainer}>
+                                <div className={classes.commentDiv}>
+                                    <img src={defaultProfilePic}  className={classes.profileImage}/>
+                                    <div 
+                                        id="commentDivId" 
+                                        contentEditable="true" 
+                                        className={classes.placeCommentDiv}
+                                        placeholder="Add a comment..." >
+                                    </div>
+                                </div>
+                                <button className={classes.postCommentBtn}>Post</button>
+                                <div>
+                                    <div className={classes.commentDiv}>
+                                        <img src={defaultProfilePic}  className={classes.profileImage}/>
+                                        <span className={classes.commentsFromDB}>Profile Name <br></br>
+                                        This is a new Cjkdnjdn<br></br>
+                                        sadasdasd<br></br>
+                                        adadasd<br></br>omment</span>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
