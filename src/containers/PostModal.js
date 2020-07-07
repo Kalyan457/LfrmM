@@ -49,7 +49,7 @@ class PostModal extends Component {
                     </div>
                     <div>
                         <input type="checkbox" id="anonymous" name="anonymousChkBtn" value="Anonymous" style={{marginTop:"10px"}} />
-                        <label style={{color:"gray",fontSize:"13px"}}>Post as Anonymous</label>
+                        <label for="anonymous" style={{color:"gray",fontSize:"13px"}}>Post as Anonymous</label>
                         <button className={classes.postBtn}>Post</button>
                     </div>
             </Modal>

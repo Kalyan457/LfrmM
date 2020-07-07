@@ -6,7 +6,6 @@ import registerServiceWorker from './registerServiceWorker';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Routes from '../src/components/Login/Routes';
 
-
 ReactDOM.render(
     <Router>
         <App />
