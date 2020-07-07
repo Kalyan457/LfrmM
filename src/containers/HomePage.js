@@ -7,6 +7,7 @@ import Modal from '../components/UI/Modal';
 import defaultProfilePic from '../assets/images/defaultProfilePic.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShare,faCommentAlt,faLightbulb } from '@fortawesome/free-solid-svg-icons';
+import OtherComments from './OtherComments';
 
 class HomePage extends Component {
 
@@ -296,7 +297,7 @@ class HomePage extends Component {
                                     onClick={this.postReactionsHandler.bind(this)}
                                     className={classes.postReactionsBtns}><FontAwesomeIcon icon={faCommentAlt} color="gray" size="xs" /> Comment</button>
                             </div>
-                            
+                            {/* Comments code from here */}
                             <div id="commentDivShowHide" className={classes.commentDivContainer}>
                                 <div className={classes.commentDiv}>
                                     <img src={defaultProfilePic}  className={classes.profileImage}/>
@@ -308,66 +309,9 @@ class HomePage extends Component {
                                     </div>
                                 </div>
                                 <button className={classes.postCommentBtn} onClick={this.postCommentHandler}>Post</button>
-                                <div  id ="allComments" style={{marginTop: '15px'}}>
-                                    <div className={classes.commentDiv}>
-                                            <img src={defaultProfilePic}  className={classes.profileImage}/>
-                                            <div className={classes.commentsFromDB}>
-                                                <h5 style={{marginTop: '5px', marginBottom: '0px',fontWeight:'lighter'}}>Profile Name</h5>
-                                                    <h6 style={{marginTop: '0px', marginBottom: '5px',fontWeight:'lighter',color:"gray"}}>Designation at Institution</h6>
-                                                    <h5 style={{marginTop: '10px', marginBottom: '5px',fontWeight:'lighter'}}> Comments here</h5>
-                                            </div>
-                                    </div>
-                                    <div className={classes.replyBtnCommentDiv} id="replyCommentDivId">
-                                        <button value="1" className={classes.replyCommentBtn} onClick={this.replyCommentHandler}>Reply</button>
-                                        <div className={classes.replyCommentParentDiv} id="reply_1">
-                                            <div className={classes.replyCommentDiv}>
-                                                <img src={defaultProfilePic}  className={classes.profileImage}/>
-                                                <div 
-                                                    id="commentDivId2" 
-                                                    contentEditable="true" 
-                                                    className={classes.placeCommentDiv}
-                                                    placeholder="Add a comment..." >
-                                                </div>
-                                            </div>
-                                            <button className={classes.postCommentBtn}>Post</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div style={{marginTop: '15px'}}>
-                                    <div className={classes.commentDiv}>
-                                            <img src={defaultProfilePic}  className={classes.profileImage}/>
-                                            <div className={classes.commentsFromDB}>
-                                                <h5 style={{marginTop: '5px', marginBottom: '0px',fontWeight:'lighter'}}>Profile Name</h5>
-                                                    <h6 style={{marginTop: '0px', marginBottom: '5px',fontWeight:'lighter',color:"gray"}}>Designation at Institution</h6>
-                                                    <h5 style={{marginTop: '10px', marginBottom: '5px',fontWeight:'lighter'}}> Comments here</h5>
-                                            </div>
-                                    </div>
-                                    <div className={classes.replyBtnCommentDiv} id="replyCommentDivId">
-                                        <button value="2" className={classes.replyCommentBtn} onClick={this.replyCommentHandler}>Reply</button>
-                                        <div className={classes.replyCommentParentDiv} id="reply_2">
-                                            <div className={classes.replyCommentDiv}>
-                                                <img src={defaultProfilePic}  className={classes.profileImage}/>
-                                                <div 
-                                                    id="commentDivId3" 
-                                                    contentEditable="true" 
-                                                    className={classes.placeCommentDiv}
-                                                    placeholder="Add a comment..." >
-                                                </div>
-                                            </div>
-                                            <button className={classes.postCommentBtn}>Post</button>
-                                        </div>
-                                    </div>
-                                    <div className={classes.replyCommentDiv}>
-                                            <img src={defaultProfilePic}  className={classes.profileImage}/>
-                                            <div className={classes.commentsFromDB}>
-                                                <h5 style={{marginTop: '5px', marginBottom: '0px',fontWeight:'lighter'}}>Profile Name</h5>
-                                                    <h6 style={{marginTop: '0px', marginBottom: '5px',fontWeight:'lighter',color:"gray"}}>Designation at Institution</h6>
-                                                    <h5 style={{marginTop: '10px', marginBottom: '5px',fontWeight:'lighter'}}> Comments here</h5>
-                                            </div>
-                                    </div>
-                                </div>
+                                <OtherComments commentValue="1" />
+                                <OtherComments commentValue="2" />
                             </div>
-
                         </div>
                     </div>
                 </div>

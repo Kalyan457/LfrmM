@@ -1,0 +1,26 @@
+
+.replyCommentDiv{
+    display: flex;
+    flex-direction: row;
+    margin-left: 7%;
+}
+
+
+.profileImage{
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.commentsFromDB{
+    width: 80%;
+    display: inline-block;
+     border: 1px solid #eee;
+     min-height: 50px;
+     margin-left: 5%; 
+     background-color: #efefef;
+      border-radius:8px;
+      padding-left:10px;
+}
