@@ -1,0 +1,232 @@
+
+.userPosts{
+    border: 1px solid #eee;
+    width: 95%;
+    margin: auto;
+    background-color:white;
+    min-height: 100px;
+    margin-top: 3%;
+}
+
+
+.savePostBtn{
+    float:right;
+    font-size: 13px;
+    background-color: transparent;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-right: 6px;
+    border: 1px solid rgb(60, 154, 84);
+    color: rgb(60, 154, 84);
+    cursor: pointer;
+    border-radius: 15px;
+    margin-top: 1%;
+    outline: none;
+}
+
+.savePostBtn:hover{
+    background-color: rgb(60, 154, 84);
+    color: white;
+}
+
+
+.reportPostBtn{
+    border: 1px solid rgb(219, 29, 54);
+    color: rgb(219, 29, 54);
+    float:right;
+    font-size: 13px;
+    background-color: transparent;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-right: 12px;
+    cursor: pointer;
+    border-radius: 15px;
+}
+  
+  .dropdown {
+    float: right;
+    margin-top: 1%;
+    z-index: 100;
+  }
+  
+  .dropdownContent {
+    position: absolute;
+    margin-top: 20px;
+    display: none;
+    background-color: #ffffff;
+    z-index: 500;
+    border: 1px solid #eee;
+  }
+  
+  .dropdownContent a {
+    color: #2e3134;
+    padding: 5px 5px;
+    text-decoration: none;
+    display: block;
+    z-index: 600;
+  }
+
+  .dropdownContent a:hover {background-color: #ddd;}
+  
+  .dropdown:hover .dropdownContent {display: block;}
+  
+  .dropdown:hover .dropbtn {background-color: #3e8e41;}
+
+  .commentDivContainer{
+      display: none;
+  }
+
+  .commentDiv{
+    display: flex;
+    margin-bottom:2%;
+  }
+
+  
+  .placeCommentDiv{
+    width: 80%;
+    display: inline-block;
+    border: 1px solid #eee;
+    margin-top: 2%;
+    min-height: 50px;
+    margin-left: 5%; 
+    background-color: #efefef;
+    border-radius:8px;
+    padding-left:10px;
+    outline: none;
+  }
+
+  .postCommentBtn{
+    background-color: #4CAF50;
+    color: white;
+    padding: 5px 5px;
+    border: none;
+    cursor: pointer;
+    width: 10%;
+    margin: auto;
+    margin-top: 8px;
+    border-radius: 5px ;
+    font-weight: 600;
+    font-size: 14px;
+    margin-left: 85%;
+    margin-bottom: 1%;
+    outline: none;
+  }
+
+  .commentsFromDB{
+    width: 80%;
+    display: inline-block;
+     border: 1px solid #eee;
+     min-height: 50px;
+     margin-left: 5%; 
+     background-color: #efefef;
+      border-radius:8px;
+      padding-left:10px;
+  }
+  .replyBtnCommentDiv{
+      margin-top: -2%;
+  }
+
+  .replyCommentBtn{
+      outline: none;
+      background-color: transparent;
+      border: none;
+      color: gray;
+      margin-left: 16%;
+      cursor: pointer;
+  }
+
+  .replyCommentParentDiv{
+      display: none;
+      margin-bottom:2%;
+      flex-direction: column;
+  }
+
+  .replyCommentDiv{
+      display: flex;
+      flex-direction: row;
+      margin-left: 7%;
+  }
+
+  .postReactionsDiv{
+    margin-top: 0%;
+}
+
+.postReactionsCountDiv{
+    border-bottom: 1px solid rgba(0,0,0,0.15);
+    background: #fff;
+    margin-top: 10px;
+}
+
+.postReactionsCount{
+    padding: 1%;
+    color: gray;
+    font-size: 13px;
+}
+
+/* .postReactionsCountDiv::after{
+    background: linear-gradient(to right, rgb(60, 154, 84) 20%,rgb(244, 157, 13) 40%,rgb(219, 29, 54) 100%);
+  position: absolute;
+  content: '';
+  height: 1px;
+  right: 0;
+  left: 0;
+  top: 0;
+} */
+
+.postReactionsBtns{
+    background:none;
+    border: none;
+    padding-bottom: 1%;
+    padding-top: 1%;
+    font-size: 13px;
+    color: gray;
+    outline: none;
+    cursor: pointer;
+}
+
+.postReactionsBtns:hover {
+    background-color: #eee;
+}
+
+
+.postReactionsBtnsClicked{
+    background:none;
+    border: none;
+    padding-bottom: 1%;
+    padding-top: 1%;
+    font-size: 13px;
+    color: rgb(60, 154, 84);
+    outline: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.postReactionsBtnsClicked:hover{
+    background-color: #eee;
+}
+
+.greenFont{
+    color: rgb(60, 154, 84);
+}
+
+.yellowFont2{
+    color: rgb(244, 157, 13);
+}
+
+.redFont{
+    color: rgb(219, 29, 54);
+}
+
+.profileImage{
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.profileDetails{
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+}

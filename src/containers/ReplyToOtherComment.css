@@ -24,3 +24,13 @@
       border-radius:8px;
       padding-left:10px;
 }
+
+
+.replyCommentBtn{
+    outline: none;
+    background-color: transparent;
+    border: none;
+    color: gray;
+    margin-left: 22%;
+    cursor: pointer;
+}
