@@ -5,32 +5,7 @@ import ReplyToOtherComment from './ReplyToOtherComment';
 
 class OtherComments extends Component{
     state={
-        subComments:[
-            {
-                commentId:'',
-                profileName: "",
-                designation: "",
-                institute: "",
-                comment:""
-            }
-        ]
-    }
-    componentDidUpdate(){
-        console.log("In ComponentDidUpdate");
-    }
-    componentDidMount(){
-        console.log("In ComponentDidMount in OtherComments");
-        this.setState({
-            subComments:this.props.mainCommentData.subComment,
-        })
-        console.log(this.state.subComments);
-    }
-    componentWillMount(){
-        console.log("In ComponentWillMount in OtherComments");
-        this.setState({
-            subComments:this.props.mainCommentData.subComment,
-        })
-        console.log(this.state.subComments);
+        subComments:this.props.mainCommentData.subComments
     }
 
     replyCommentHandler = (event) => {
@@ -45,7 +20,7 @@ class OtherComments extends Component{
         var divId = "reply_"+this.props.commentValue;
 
         return(
-            <div  id ="allComments" style={{marginTop: '15px'}}>
+            <div  id ="allComments" style={{marginTop: '15px',marginBottom: '15px'}}>
                 <div className={classes.commentDiv}>
                         <img src={defaultProfilePic}  className={classes.profileImage}/>
                         <div className={classes.commentsFromDB}>

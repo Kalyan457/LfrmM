@@ -4,46 +4,15 @@ import OtherComments from './OtherComments';
 import defaultProfilePic from '../assets/images/defaultProfilePic.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShare,faCommentAlt,faLightbulb } from '@fortawesome/free-solid-svg-icons';
+import ReactionsCount from './ReactionsCount';
 
 class UserPosts extends Component {
 
     state={
         savePostState:[],
-        postReactions:[false,false,false,false],
-        mainComments:[
-            {
-                commentId:'',
-                profileName: "",
-                designation: "",
-                institute: "",
-                comment:"",
-                loadMoreSubComments: false,
-                subComment:[
-                    {
-                        commentId:'',
-                        profileName: "",
-                        designation: "",
-                        institute: "",
-                        comment:""
-                    }
-                ]
-            }
-        ]
+        mainComments: this.props.postData.mainComments
     }
-
-    componentDidMount(){
-        var PostReactionsFromProps=[];
-        PostReactionsFromProps[0]=this.props.postData.learnedClicked;
-        PostReactionsFromProps[1]=this.props.postData.appreciateClicked;
-        PostReactionsFromProps[2]=this.props.postData.shareClicked;
-        PostReactionsFromProps[3]=false;
-        this.setState({
-            postReactions:PostReactionsFromProps,
-            mainComments:this.props.postData.mainComments,
-        })
-        console.log(this.props.postData.mainComments);
-    }
-    
+   
     saveBtnHandler = (event) => {
         event.preventDefault();
         var selectedBtnId=event.target.id;
@@ -74,48 +43,6 @@ class UserPosts extends Component {
             this.setState({savePostState:savePostStateCopy});
         }
     };
-
-    
-    postReactionsHandler = (event) => {
-        event.preventDefault();
-        var selectedBtnId=event.target.id;
-        if(selectedBtnId !== undefined){
-            var control = document.getElementById(selectedBtnId);
-            var reactionCountControl = document.getElementById("reactionsCount"+"_"+selectedBtnId);
-            var oldCount = reactionCountControl.innerText.split(" ")[0];
-            var reactionSymbol = reactionCountControl.innerText.split(" ")[1];
-            var postReactionsCopy = this.state.postReactions.slice();
-            if(postReactionsCopy[selectedBtnId]==true){
-                control.style.color="gray";
-                control.style.backgroundColor="white";
-                control.style.fontWeight="normal";
-                postReactionsCopy[selectedBtnId]=false;
-                if(selectedBtnId!=3){
-                    var updatedCount = parseInt(oldCount)-1;
-                    reactionCountControl.innerText = updatedCount+" "+reactionSymbol;
-                }
-                else{
-                    document.getElementById("commentDivShowHide").style.display="none";
-                }
-            }
-            else{
-                control.style.color="rgb(60, 154, 84)";
-                control.style.backgroundColor="white";
-                control.style.fontWeight="bold"
-                if(selectedBtnId!=3){
-                    var updatedCount = parseInt(oldCount)+1;
-                    reactionCountControl.innerText = updatedCount+" "+reactionSymbol;
-                }
-                else{
-                    document.getElementById("commentDivShowHide").style.display="block";
-                    document.getElementById("commentDivId").focus();
-                }
-                postReactionsCopy[selectedBtnId]=true;
-            }
-            this.setState({postReactions:postReactionsCopy});
-        }
-    };
-
     
     replyCommentHandler = (event) => {
         console.log(event.target.value);
@@ -170,44 +97,12 @@ class UserPosts extends Component {
                     </h4>
                     <p style={{paddingLeft: '10px'}}>{this.props.postData.learning}</p>
                 </div>
-                <div className={classes.postReactionsCountDiv}>
-                    <span 
-                        id="reactionsCount_0"
-                        className={classes.postReactionsCount}>{this.props.postData.learnedCount} &#128161;</span>
-                    <span 
-                        id="reactionsCount_1"
-                        className={classes.postReactionsCount}>{this.props.postData.appreciateCount} &#128079;</span>
-                    <span 
-                        id="reactionsCount_2"
-                        className={classes.postReactionsCount}>{this.props.postData.shareCount} &#10150;</span>
-                    <span 
-                        id="reactionsCount_3"
-                        className={classes.postReactionsCount}>{this.props.postData.commentCount} <FontAwesomeIcon icon={faCommentAlt} color="gray" size="xs" /></span>
-                </div>
-                <div className={classes.postReactionsDiv}>
-                    <button 
-                        id="0"
-                        onClick={this.postReactionsHandler.bind(this)}
-                        className={this.props.postData.learnedClicked ? classes.postReactionsBtnsClicked : classes.postReactionsBtns}>&#128161; Learned</button>
-                    <button 
-                        id="1"
-                        onClick={this.postReactionsHandler.bind(this)}
-                        className={this.props.postData.appreciateClicked ? classes.postReactionsBtnsClicked : classes.postReactionsBtns}>&#x1f44f; Appreciate</button>
-                    <button 
-                        id="2"
-                        onClick={this.postReactionsHandler.bind(this)}
-                        className={this.props.postData.shareClicked ? classes.postReactionsBtnsClicked : classes.postReactionsBtns}>&#10150; Share</button>
-                    <button 
-                        id="3"
-                        onClick={this.postReactionsHandler.bind(this)}
-                        className={classes.postReactionsBtns}><FontAwesomeIcon icon={faCommentAlt} color="gray" size="xs" /> Comment</button>
-                </div>
-                {/* Comments code from here */}
-                <div id="commentDivShowHide" className={classes.commentDivContainer}>
+                <ReactionsCount reactionCountData = {this.props.postData} />
+                <div id={"post_"+this.props.postData.postId+"_commentDivShowHide"} className={classes.commentDivContainer}>
                     <div className={classes.commentDiv}>
                         <img src={defaultProfilePic}  className={classes.profileImage}/>
                         <div 
-                            id="commentDivId" 
+                            id={"post_"+this.props.postData.postId+"_commentDivId"}
                             contentEditable="true" 
                             className={classes.placeCommentDiv}
                             placeholder="Add a comment..." >

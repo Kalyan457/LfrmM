@@ -1,0 +1,45 @@
+
+.postReactionsCountDiv{
+    border-bottom: 1px solid rgba(0,0,0,0.15);
+    background: #fff;
+    margin-top: 10px;
+}
+
+.postReactionsCount{
+    padding: 1%;
+    color: gray;
+    font-size: 13px;
+}
+
+.postReactionsBtns{
+    background:none;
+    border: none;
+    padding-bottom: 1%;
+    padding-top: 1%;
+    font-size: 13px;
+    color: gray;
+    outline: none;
+    cursor: pointer;
+}
+
+.postReactionsBtns:hover {
+    background-color: #eee;
+}
+
+
+.postReactionsBtnsClicked{
+    background:none;
+    border: none;
+    padding-bottom: 1%;
+    padding-top: 1%;
+    font-size: 13px;
+    color: rgb(60, 154, 84);
+    outline: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.postReactionsBtnsClicked:hover{
+    background-color: #eee;
+}
+

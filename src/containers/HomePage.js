@@ -14,52 +14,13 @@ class HomePage extends Component {
     constructor(props){
         super(props);
         this.state={
-            post:[
-                // {
-                //     postId:'',
-                //     profileName: "",
-                //     designation: "",
-                //     institute: "",
-                //     mistake: "",
-                //     learning: "",
-                //     saved: false,
-                //     viewed: false,
-                //     learnedCount: 0,
-                //     appreciateCount:0,
-                //     shareCount:0,
-                //     commentCount:0,
-                //     learnedClicked:false,
-                //     appreciateClicked:false,
-                //     shareClicked:false,
-                //     loadMoreComments:false,
-                //     mainComments:[
-                //         {
-                //             commentId:'',
-                //             profileName: "",
-                //             designation: "",
-                //             institute: "",
-                //             comment:"",
-                //             loadMoreSubComments: false
-                //         }
-                //     ],
-                //     subComments:[
-                //         [
-                //             {
-                //                 commentId:'',
-                //                 profileName: "",
-                //                 designation: "",
-                //                 institute: "",
-                //                 comment:""
-                //             }
-                //         ]
-                //     ]
-                // }
-            ],
+            post:[],
             highlightedMenuId : 'menu_1',
             postingNewPost: false,
             error: false,
             hasMore: true,
-            isLoading: false
+            isLoading: false,
+            postIdUsedforIncrementing:0
         }
 
         window.onscroll = debounce(() => {
@@ -89,7 +50,7 @@ class HomePage extends Component {
         this.setState({ isLoading: true }, () => {  
             const nextPosts = [
                 {
-                    postId:1,
+                    postId:this.state.postIdUsedforIncrementing+1,
                     profileName: "My Profile",
                     designation: "My Desig",
                     institute: "My Insti",
@@ -133,6 +94,7 @@ class HomePage extends Component {
                 ...this.state.post,
                 ...nextPosts,
                 ],
+                postIdUsedforIncrementing:this.state.postIdUsedforIncrementing+1
             });
       });
       console.log(this.state.post);
