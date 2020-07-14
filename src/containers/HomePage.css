@@ -52,6 +52,7 @@ body{
     padding: 2%;
     text-decoration: none;
     color: black;
+    margin-top: 5%;
 }
 
 .searchInput{
@@ -146,6 +147,7 @@ body{
     color:#2e3134;
     font-family: "Open Sans";
     margin-top: 8px;
+    padding-left:1%;
 }
 
 
@@ -155,4 +157,11 @@ body{
     color: #ccc;
     cursor: not-allowed;
     opacity: 0.4;
+}
+.rainbow {
+  background-image: -webkit-gradient( linear, left top, right top, color-stop(0, rgb(60, 154, 84)), color-stop(0.15, rgb(60, 154, 84)), color-stop(0.3, rgb(60, 154, 84)), color-stop(0.45, rgb(244, 157, 13)), color-stop(0.6, rgb(244, 157, 13)),color-stop(0.75, rgb(219, 29, 54)), color-stop(0.9, rgb(219, 29, 54)), color-stop(1, rgb(219, 29, 54)) );
+  background-image: gradient( linear, left top, right top, color-stop(0, rgb(60, 154, 84)), color-stop(0.15, rgb(60, 154, 84)), color-stop(0.3, rgb(60, 154, 84)), color-stop(0.45, rgb(244, 157, 13)), color-stop(0.6, rgb(244, 157, 13)),color-stop(0.75, rgb(219, 29, 54)), color-stop(0.9, rgb(219, 29, 54)), color-stop(1, rgb(219, 29, 54)) );
+  color:transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
 }

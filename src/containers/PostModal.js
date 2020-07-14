@@ -35,13 +35,13 @@ class PostModal extends Component {
                         <h4 style={{marginTop: "15px", marginBottom: "3px", textAlign: 'left', paddingLeft: '10px'}}>
                             <span className={classes.redFont}>#Mistake</span>
                         </h4>
-                       <div className={classes.contentDiv} id="editable1" contentEditable = "true" placeholder="Express your misunderstanding if any, else post your learning below." style={{paddingLeft: '10px'}}>
+                       <div className={classes.contentDiv} id="editable1" contentEditable = "true" placeholder="Express your mistake if any, else post your learning below." style={{paddingLeft: '10px'}}>
                         </div>
                         <div className={classes.attachments}></div>
                     </div>
                     <div>
                         <h4 style={{marginTop: "15px", marginBottom: "3px", textAlign: 'left', paddingLeft: '10px'}}>
-                        <span className={classes.greenFont}>#Learning</span>
+                            <span className={classes.greenFont}>#Learning</span>
                         </h4>
                         <div className={classes.contentDiv}  contentEditable = "true" placeholder="Hurray... I learned this new thing and hope it helps y'all. " style={{paddingLeft: '10px'}}>
                         </div>

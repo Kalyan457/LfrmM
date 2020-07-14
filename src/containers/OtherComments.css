@@ -43,13 +43,12 @@
 }
 
 .replyCommentParentDiv{
-    display: none;
+    display: flex;
     margin-bottom:2%;
     flex-direction: column;
 }
 
-
-.placeCommentDiv{
+.placeCommentDiv2{
     width: 80%;
     display: inline-block;
     border: 1px solid #eee;
@@ -60,6 +59,7 @@
     border-radius:8px;
     padding-left:10px;
     outline: none;
+    font-size: 13px;
   }
 
   
@@ -78,4 +78,10 @@
     margin-left: 85%;
     margin-bottom: 1%;
     outline: none;
+  }
+
+  .reportBtnForComment{
+      float: right;
+      font-size: 12px;
+      color: gray;
   }

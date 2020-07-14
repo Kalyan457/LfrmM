@@ -9,27 +9,6 @@
 }
 
 
-.savePostBtn{
-    float:right;
-    font-size: 13px;
-    background-color: transparent;
-    padding-left: 15px;
-    padding-right: 15px;
-    margin-right: 6px;
-    border: 1px solid rgb(60, 154, 84);
-    color: rgb(60, 154, 84);
-    cursor: pointer;
-    border-radius: 15px;
-    margin-top: 1%;
-    outline: none;
-}
-
-.savePostBtn:hover{
-    background-color: rgb(60, 154, 84);
-    color: white;
-}
-
-
 .reportPostBtn{
     border: 1px solid rgb(219, 29, 54);
     color: rgb(219, 29, 54);
@@ -41,6 +20,7 @@
     margin-right: 12px;
     cursor: pointer;
     border-radius: 15px;
+    outline: none;
 }
   
   .dropdown {
@@ -71,29 +51,6 @@
   .dropdown:hover .dropdownContent {display: block;}
   
   .dropdown:hover .dropbtn {background-color: #3e8e41;}
-
-  .commentDivContainer{
-      display: none;
-  }
-
-  .commentDiv{
-    display: flex;
-    margin-bottom:2%;
-  }
-
-  
-  .placeCommentDiv{
-    width: 80%;
-    display: inline-block;
-    border: 1px solid #eee;
-    margin-top: 2%;
-    min-height: 50px;
-    margin-left: 5%; 
-    background-color: #efefef;
-    border-radius:8px;
-    padding-left:10px;
-    outline: none;
-  }
 
   .postCommentBtn{
     background-color: #4CAF50;

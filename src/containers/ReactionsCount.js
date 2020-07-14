@@ -3,6 +3,8 @@ import classes from './ReactionsCount.css';
 import Auxillary from '../hoc/Auxillary';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShare,faCommentAlt,faLightbulb } from '@fortawesome/free-solid-svg-icons';
+import OtherComments from './OtherComments';
+import defaultProfilePic from '../assets/images/defaultProfilePic.png';
 
 class ReactionsCount extends Component {
 
@@ -12,13 +14,14 @@ class ReactionsCount extends Component {
         shareCount:this.props.reactionCountData.shareCount,
         commentCount:this.props.reactionCountData.commentCount,
         postReactions:[this.props.reactionCountData.learnedClicked,this.props.reactionCountData.appreciateClicked,this.props.reactionCountData.shareClicked,false],
+        mainComments: this.props.reactionCountData.mainComments,
+        show:false,
+        postId:this.props.reactionCountData.postId
     }
 
     postReactionsHandler = (event) => {
         event.preventDefault();
         var selectedBtnId=event.target.id;
-        var id="post_"+this.props.reactionCountData.postId;
-        console.log(id);
         if(selectedBtnId !== undefined){
             var oldLearnedCount=this.state.learnedCount;
             var oldAppreciateCount=this.state.appreciateCount;
@@ -35,7 +38,7 @@ class ReactionsCount extends Component {
                     this.setState({shareCount:oldShareCount-1});
                 }
                 else{
-                    document.getElementById(id+"_commentDivShowHide").style.display="none";
+                    this.setState({show:false});
                 }
                 postReactionsCopy[selectedBtnId]=false;  
             }
@@ -50,8 +53,8 @@ class ReactionsCount extends Component {
                     this.setState({shareCount:oldShareCount+1});
                 }
                 else{
-                    document.getElementById(id+"_commentDivShowHide").style.display="block";
-                    document.getElementById(id+"_commentDivId").focus();
+                    this.setState({show:true});
+                    //document.getElementById("post_"+this.state.postId+"_commentDivId").focus();
                 }
                 postReactionsCopy[selectedBtnId]=true;
             }
@@ -60,6 +63,22 @@ class ReactionsCount extends Component {
     };
 
     render(){
+        var commentsToRender=null;
+        if(this.state.show){
+            commentsToRender = (<Auxillary>
+                                    <div className={classes.commentDiv}>
+                                        <img src={defaultProfilePic}  className={classes.profileImage}/>
+                                        <div 
+                                            id={"post_"+this.state.postId+"_commentDivId"}
+                                            contentEditable="true" 
+                                            className={classes.placeCommentDiv}
+                                            placeholder="Add a comment..." >
+                                        </div>
+                                    </div>
+                                    <button className={classes.postCommentBtn} onClick={this.postCommentHandler}>Post</button>
+                                    { this.state.mainComments.map((eachMainComment) => (<OtherComments mainCommentData={eachMainComment} postIdProp={this.state.postId}/>))}
+                                </Auxillary>);
+        }
         return(
                 <Auxillary>
                     <div className={classes.postReactionsCountDiv}>
@@ -90,6 +109,7 @@ class ReactionsCount extends Component {
                             onClick={this.postReactionsHandler.bind(this)}
                             className={classes.postReactionsBtns}><FontAwesomeIcon icon={faCommentAlt} color="gray" size="xs" /> Comment</button>
                     </div>
+                    {commentsToRender}
                 </Auxillary>
         );
     }

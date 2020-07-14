@@ -34,3 +34,9 @@
     margin-left: 22%;
     cursor: pointer;
 }
+
+.reportBtnForComment{
+    float: right;
+    font-size: 12px;
+    color: gray;
+}

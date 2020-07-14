@@ -1,0 +1,19 @@
+.savePostBtn{
+    float:right;
+    font-size: 13px;
+    background-color: transparent;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-right: 6px;
+    border: 1px solid rgb(60, 154, 84);
+    color: rgb(60, 154, 84);
+    cursor: pointer;
+    border-radius: 15px;
+    margin-top: 1%;
+    outline: none;
+}
+
+.savePostBtn:hover{
+    background-color: rgb(60, 154, 84);
+    color: white;
+}

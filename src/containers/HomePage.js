@@ -38,17 +38,12 @@ class HomePage extends Component {
             }
         }, 100);
     }
-  
-    componentDidMount(){
-        console.log("In ComponentWillMount HomePage");
-        this.loadUsers();
-    }
     
   
-    loadUsers = () => { 
-        console.log("In loadUsers HomePage");
-        this.setState({ isLoading: true }, () => {  
-            const nextPosts = [
+    loadUsers = () => {
+//        this.setState({ isLoading: true }, () => {  
+//      });
+       const nextPosts = [
                 {
                     postId:this.state.postIdUsedforIncrementing+1,
                     profileName: "My Profile",
@@ -56,7 +51,7 @@ class HomePage extends Component {
                     institute: "My Insti",
                     mistake: "This is My Mistake. I made it",
                     learning: "This is My Learning. I learned it",
-                    saved: false,
+                    saved: true,
                     viewed: false,
                     learnedCount: 2,
                     appreciateCount:3,
@@ -68,7 +63,7 @@ class HomePage extends Component {
                     loadMoreComments:false,
                     mainComments:[
                         {
-                            commentId:'1',
+                            commentId:this.state.postIdUsedforIncrementing+1,
                             profileName: "PName",
                             designation: "Desig",
                             institute: "Inst",
@@ -76,7 +71,7 @@ class HomePage extends Component {
                             loadMoreSubComments: false,
                             subComments:[
                                 {
-                                    commentId:'2',
+                                    commentId:this.state.postIdUsedforIncrementing+1,
                                     profileName: "PNameSub",
                                     designation: "DesigSub",
                                     institute: "InstSub",
@@ -96,8 +91,6 @@ class HomePage extends Component {
                 ],
                 postIdUsedforIncrementing:this.state.postIdUsedforIncrementing+1
             });
-      });
-      console.log(this.state.post);
     }
 
     menuItemClickHandler = (event) => {
@@ -129,8 +122,6 @@ class HomePage extends Component {
     } 
 
     render(){
-        console.log(this.state.post);
-        const arra = [];
         var modal=null;
         if(this.state.postingNewPost){
             modal=<PostModal parentMethod={this.postingCancelHandler} postingPost={this.state.postingNewPost}/>
@@ -154,12 +145,14 @@ class HomePage extends Component {
                                     href="#" 
                                     id="menu_1" 
                                     style={{color:'green'}}
-                                    onClick={this.menuItemClickHandler.bind(this)}>Home</a>
+                                    onClick={this.menuItemClickHandler.bind(this)}>
+                                    <span className={classes.rainbow}>Home</span></a>
                                 <a 
                                     className={classes.sideMenu} 
                                     href="#" 
                                     id="menu_2"
-                                    onClick={this.menuItemClickHandler.bind(this)} >#MyLearnings</a>
+                                    onClick={this.menuItemClickHandler.bind(this)} >
+                                    #MyLearnings</a>
                                  <a 
                                     className={classes.sideMenu} 
                                     href="#" 
