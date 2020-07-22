@@ -54,13 +54,42 @@ class ReactionsCount extends Component {
                 }
                 else{
                     this.setState({show:true});
-                    //document.getElementById("post_"+this.state.postId+"_commentDivId").focus();
                 }
                 postReactionsCopy[selectedBtnId]=true;
             }
             this.setState({postReactions:postReactionsCopy});
         }
     };
+
+    postCommentHandler = (event) => {
+        console.log("In Post Comment Handler In ReactionsCount");
+        var commentId= "post_"+this.state.postId+"_commentDivId";
+        var commentText = document.getElementById(commentId).innerText;
+        console.log(commentText);
+        var mainCommentPresentInState=this.state.mainComments;
+        var newComment=[
+            {
+                commentId:15,
+                profileName: "PName",
+                designation: "Desig",
+                institute: "Inst",
+                comment:commentText,
+                loadMoreSubComments: false,
+                subComments:[]
+            }
+        ]
+        this.setState({
+            mainComments:[
+                ...newComment,
+                ...this.state.mainComments
+            ]
+        });
+    };
+
+    componentWillUpdate(){
+        console.log("In component will update");
+        console.log(this.state.mainComments);
+    }
 
     render(){
         var commentsToRender=null;

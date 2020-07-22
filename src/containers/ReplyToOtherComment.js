@@ -4,14 +4,33 @@ import defaultProfilePic from '../assets/images/defaultProfilePic.png';
 import Auxillary from '../hoc/Auxillary';
 
 class ReplyToOtherComment extends Component{
+
+    state={
+        show:false
+    }
     
     replyCommentHandler = (event) => {
-        console.log(event.target.value);
-        var id = "reply_"+event.target.value;
-        document.getElementById(id).style.display="flex";
+        this.setState({show:true});
     }
     
     render(){
+        var replyToOtherComment=null;
+        if(this.state.show){
+            replyToOtherComment=
+                    <div className={classes.replyCommentParentDiv}>
+                        <div className={classes.replyCommentDiv}>
+                            <img src={defaultProfilePic}  className={classes.profileImage}/>
+                            <div 
+                                id="commentDivId2" 
+                                contentEditable="true" 
+                                className={classes.placeCommentDiv2}
+                                placeholder="Add a comment..." >
+                            </div>
+                        </div>
+                        <button className={classes.postCommentBtn}>Post</button>
+                    </div>
+        }
+
         return(
             <Auxillary>
                 <div className={classes.replyCommentDiv}>
@@ -23,17 +42,10 @@ class ReplyToOtherComment extends Component{
                         <h5 style={{marginTop: '10px', marginBottom: '5px',fontWeight:'lighter'}}>{this.props.replyToOtherCommentData.comment}</h5>
                     </div>
                 </div>
-                <button value={this.props.commentValue} className={classes.replyCommentBtn} onClick={this.replyCommentHandler}>Reply</button>
-                {/* <div className={classes.commentDiv}>
-                    <img src={defaultProfilePic}  className={classes.profileImage}/>
-                    <div 
-                        id={"post_"+this.props.postData.postId+"_commentDivId"}
-                        contentEditable="true" 
-                        className={classes.placeCommentDiv}
-                        placeholder="Add a comment..." >
-                    </div>
+                <div className={classes.replyBtnCommentDiv} id="replyCommentDivId">
+                    <button value={this.props.commentValue} className={classes.replyCommentBtn} onClick={this.replyCommentHandler}>Reply</button>
+                    {replyToOtherComment}
                 </div>
-                <button className={classes.postCommentBtn} onClick={this.postCommentHandler}>Post</button> */}
             </Auxillary>
         );
     }

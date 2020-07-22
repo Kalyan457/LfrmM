@@ -19,6 +19,42 @@ class OtherComments extends Component{
         document.getElementById("post_"+this.state.postId+"_commentDivId").focus();
     }
 
+    componentWillReceiveProps(nextProps){
+        if(nextProps.mainCommentData.subComments!=this.props.mainCommentData.subComments){
+            var oldState=Object.assign({}, this.state.subComments);
+            oldState=[...oldState,...nextProps.mainCommentData.subComments]
+            this.setState({
+                // subComments:[
+                //     ...this.state.subComments,
+                //     ...nextProps.mainCommentData.subComments
+                // ]
+                subComments:oldState
+            })
+        }
+    }
+
+    postCommentHandler = (event) => {
+        console.log("In Post Comment Handler In OtherComments");
+        var id="post_"+this.state.postId+"comment_"+this.props.mainCommentData.commentId;
+        var commentText = document.getElementById(id).innerText;
+        console.log(commentText);
+        var newComment=[
+            {
+                commentId:53,
+                profileName: "PNameSub",
+                designation: "DesigSub",
+                institute: "InstSub",
+                comment:commentText
+            }
+        ]
+        this.setState({
+            subComments:[
+                ...newComment,
+                ...this.state.subComments
+            ]
+        });
+    }
+
     render(){
         console.log(this.state.subComments);
         var replyToMainComment=null;
@@ -28,13 +64,13 @@ class OtherComments extends Component{
                         <div className={classes.replyCommentDiv}>
                             <img src={defaultProfilePic}  className={classes.profileImage}/>
                             <div 
-                                id="commentDivId2" 
+                                id={"post_"+this.state.postId+"comment_"+this.props.mainCommentData.commentId}
                                 contentEditable="true" 
                                 className={classes.placeCommentDiv2}
                                 placeholder="Add a comment..." >
                             </div>
                         </div>
-                        <button className={classes.postCommentBtn}>Post</button>
+                        <button className={classes.postCommentBtn} onClick={this.postCommentHandler}>Post</button>
                     </div>
         }
 
@@ -52,18 +88,6 @@ class OtherComments extends Component{
                 <div className={classes.replyBtnCommentDiv} id="replyCommentDivId">
                     <button value={this.props.mainCommentData.commentId} className={classes.replyCommentBtn} onClick={this.replyCommentHandler}>Reply</button>
                     {replyToMainComment}
-                    {/* <div className={classes.replyCommentParentDiv} id={"reply_"+this.props.mainCommentData.commentId}>
-                        <div className={classes.replyCommentDiv}>
-                            <img src={defaultProfilePic}  className={classes.profileImage}/>
-                            <div 
-                                id="commentDivId2" 
-                                contentEditable="true" 
-                                className={classes.placeCommentDiv}
-                                placeholder="Add a comment..." >
-                            </div>
-                        </div>
-                        <button className={classes.postCommentBtn}>Post</button>
-                    </div> */}
                 </div>
                 {this.state.subComments.map((eachSubComment) => (<ReplyToOtherComment replyToOtherCommentData={eachSubComment} />))}
             </div>

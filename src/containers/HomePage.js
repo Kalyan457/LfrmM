@@ -67,7 +67,7 @@ class HomePage extends Component {
                             profileName: "PName",
                             designation: "Desig",
                             institute: "Inst",
-                            comment:"This is My Comment from state",
+                            comment:"This is My Comment1 from state",
                             loadMoreSubComments: false,
                             subComments:[
                                 {
@@ -75,10 +75,41 @@ class HomePage extends Component {
                                     profileName: "PNameSub",
                                     designation: "DesigSub",
                                     institute: "InstSub",
-                                    comment:"This is sub comment"
+                                    comment:"This is sub comment1"
+                                },
+                                {
+                                    commentId:this.state.postIdUsedforIncrementing+2,
+                                    profileName: "PNameSub",
+                                    designation: "DesigSub",
+                                    institute: "InstSub",
+                                    comment:"This is sub comment2"
                                 }
                             ]
-                        }   
+                        },
+                        {
+                            commentId:this.state.postIdUsedforIncrementing+2,
+                            profileName: "PName",
+                            designation: "Desig",
+                            institute: "Inst",
+                            comment:"This is My Comment2 from state",
+                            loadMoreSubComments: false,
+                            subComments:[
+                                {
+                                    commentId:this.state.postIdUsedforIncrementing+3,
+                                    profileName: "PNameSub",
+                                    designation: "DesigSub",
+                                    institute: "InstSub",
+                                    comment:"This is sub comment3"
+                                },
+                                {
+                                    commentId:this.state.postIdUsedforIncrementing+4,
+                                    profileName: "PNameSub",
+                                    designation: "DesigSub",
+                                    institute: "InstSub",
+                                    comment:"This is sub comment4"
+                                }
+                            ]
+                        }     
                     ]
                 }
             ]
