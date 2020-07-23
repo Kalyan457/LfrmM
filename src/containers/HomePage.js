@@ -34,15 +34,13 @@ class HomePage extends Component {
             } = this;
             if (error || isLoading || !hasMore) return;
             if (window.innerHeight + document.documentElement.scrollTop === document.documentElement.offsetHeight) {
-                loadUsers();
+                //loadUsers();
             }
         }, 100);
     }
     
   
     loadUsers = () => {
-//        this.setState({ isLoading: true }, () => {  
-//      });
        const nextPosts = [
                 {
                     postId:this.state.postIdUsedforIncrementing+1,

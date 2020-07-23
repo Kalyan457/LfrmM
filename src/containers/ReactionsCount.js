@@ -84,10 +84,10 @@ class ReactionsCount extends Component {
                 ...this.state.mainComments
             ]
         });
+        document.getElementById(commentId).innerText="";
     };
 
     componentWillUpdate(){
-        console.log("In component will update");
         console.log(this.state.mainComments);
     }
 

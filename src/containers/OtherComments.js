@@ -12,26 +12,37 @@ class OtherComments extends Component{
 
     replyCommentHandler = (event) => {
         this.setState({show:true});
-        console.log(event.target.value);
     }
 
     componentDidMount(){
         document.getElementById("post_"+this.state.postId+"_commentDivId").focus();
     }
 
+    //for only main typed comment
+    // componentWillReceiveProps(nextProps){
+    //     if(nextProps.mainCommentData.subComments!=this.props.mainCommentData.subComments){
+    //         this.setState({
+    //             subComments:[
+    //                 ...nextProps.mainCommentData.subComments
+    //             ]
+    //         });
+    //     }
+    // }
+
     componentWillReceiveProps(nextProps){
+        console.log(nextProps.mainCommentData);
+        console.log(this.props.mainCommentData);
         if(nextProps.mainCommentData.subComments!=this.props.mainCommentData.subComments){
-            var oldState=Object.assign({}, this.state.subComments);
-            oldState=[...oldState,...nextProps.mainCommentData.subComments]
+            console.log(this.props.mainCommentData);
+            console.log(this.state.subComments);
+            var combined = [...new Set([...this.state.subComments, ...this.props.mainCommentData])];
+            console.log(combined);
             this.setState({
-                // subComments:[
-                //     ...this.state.subComments,
-                //     ...nextProps.mainCommentData.subComments
-                // ]
-                subComments:oldState
-            })
+                subComments:combined
+            });
         }
     }
+
 
     postCommentHandler = (event) => {
         console.log("In Post Comment Handler In OtherComments");
@@ -51,8 +62,10 @@ class OtherComments extends Component{
             subComments:[
                 ...newComment,
                 ...this.state.subComments
-            ]
+            ],
+            show:false //after posting the comment, turn the display off
         });
+        console.log(this.state.subComments);
     }
 
     render(){

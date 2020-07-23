@@ -10,26 +10,17 @@ class SavePost extends Component {
 
     saveBtnHandler = (event) => {
         event.preventDefault();
-//        var id="post_"+this.props.postData.postId+"_savePost_Btn";
-//        var control = document.getElementById(id);
         var savePostCopy = this.state.savePost;
-//        var btnText = control.innerText;
         if(savePostCopy == true){
-//                btnText=btnText.substring(0,btnText.length-3);
-//                control.innerText=btnText;
                 savePostCopy = false;
             }
             else{
-//                btnText=btnText+"d"+ " "+'&#10003;';
-//                control.innerText=btnText;
                 savePostCopy = true;
             }
-            
             this.setState({savePost:savePostCopy});
     };
 
     render(){
-        console.log(this.props.savePostData);
         return(
             <Auxillary>
                 <span style={{float:'right',color:'green',fontSize:'20px'}}>{this.state.viewPost ? "✓" : ""}</span>
