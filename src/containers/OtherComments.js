@@ -18,57 +18,28 @@ class OtherComments extends Component{
         document.getElementById("post_"+this.state.postId+"_commentDivId").focus();
     }
 
-    //for only main typed comment
-    // componentWillReceiveProps(nextProps){
-    //     if(nextProps.mainCommentData.subComments!=this.props.mainCommentData.subComments){
-    //         this.setState({
-    //             subComments:[
-    //                 ...nextProps.mainCommentData.subComments
-    //             ]
-    //         });
-    //     }
-    // }
-
-    componentWillReceiveProps(nextProps){
-        console.log(nextProps.mainCommentData);
-        console.log(this.props.mainCommentData);
-        if(nextProps.mainCommentData.subComments!=this.props.mainCommentData.subComments){
-            console.log(this.props.mainCommentData);
-            console.log(this.state.subComments);
-            var combined = [...new Set([...this.state.subComments, ...this.props.mainCommentData])];
-            console.log(combined);
-            this.setState({
-                subComments:combined
-            });
-        }
-    }
-
-
     postCommentHandler = (event) => {
         console.log("In Post Comment Handler In OtherComments");
         var id="post_"+this.state.postId+"comment_"+this.props.mainCommentData.commentId;
         var commentText = document.getElementById(id).innerText;
         console.log(commentText);
-        var newComment=[
+        var newComment=
             {
                 commentId:53,
                 profileName: "PNameSub",
                 designation: "DesigSub",
                 institute: "InstSub",
                 comment:commentText
-            }
-        ]
+            };
         this.setState({
-            subComments:[
-                ...newComment,
-                ...this.state.subComments
-            ],
             show:false //after posting the comment, turn the display off
         });
-        console.log(this.state.subComments);
+        console.log(this.props.indexNum);
+        this.props.parentCallBack(newComment,this.props.indexNum);
     }
 
     render(){
+        var subCommentIndexId=0;
         console.log(this.state.subComments);
         var replyToMainComment=null;
         if(this.state.show){
@@ -102,7 +73,12 @@ class OtherComments extends Component{
                     <button value={this.props.mainCommentData.commentId} className={classes.replyCommentBtn} onClick={this.replyCommentHandler}>Reply</button>
                     {replyToMainComment}
                 </div>
-                {this.state.subComments.map((eachSubComment) => (<ReplyToOtherComment replyToOtherCommentData={eachSubComment} />))}
+                {this.props.mainCommentData.subComments.map((eachSubComment) => (<ReplyToOtherComment 
+                                                                                    replyToOtherCommentData={eachSubComment} 
+                                                                                    subIndexNum={subCommentIndexId++} 
+                                                                                    callback={this.props.parentCallBackToReplyToOtherComments} 
+                                                                                    mainIndexNum={this.props.indexNum} 
+                                                                                    mainCommentId={this.props.mainCommentData.commentId}/>))}
             </div>
         );
     }

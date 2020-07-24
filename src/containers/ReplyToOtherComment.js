@@ -13,6 +13,26 @@ class ReplyToOtherComment extends Component{
         this.setState({show:true});
     }
     
+    postCommentHandler = (event) => {
+        console.log("In Post Comment Handler In ReplyToOtherComments");
+        var id="post_"+this.state.postId+"comment_"+this.props.mainCommentId+"subcomment_"+this.props.replyToOtherCommentData.commentId;
+        var commentText = document.getElementById(id).innerText;
+        console.log(commentText);
+        var newComment=
+            {
+                commentId:1213,
+                profileName: "PNameSub",
+                designation: "DesigSub",
+                institute: "InstSub",
+                comment:commentText
+            };
+        this.setState({
+            show:false //after posting the comment, turn the display off
+        });
+        console.log(this.props.subIndexNum);
+        this.props.callback(newComment,this.props.subIndexNum,this.props.mainIndexNum);
+    }
+    
     render(){
         var replyToOtherComment=null;
         if(this.state.show){
@@ -21,13 +41,13 @@ class ReplyToOtherComment extends Component{
                         <div className={classes.replyCommentDiv}>
                             <img src={defaultProfilePic}  className={classes.profileImage}/>
                             <div 
-                                id="commentDivId2" 
+                                id={"post_"+this.state.postId+"comment_"+this.props.mainCommentId+"subcomment_"+this.props.replyToOtherCommentData.commentId}
                                 contentEditable="true" 
                                 className={classes.placeCommentDiv2}
                                 placeholder="Add a comment..." >
                             </div>
                         </div>
-                        <button className={classes.postCommentBtn}>Post</button>
+                        <button className={classes.postCommentBtn} onClick={this.postCommentHandler}>Post</button>
                     </div>
         }
 

@@ -81,11 +81,29 @@ class ReactionsCount extends Component {
         this.setState({
             mainComments:[
                 ...newComment,
-                ...this.state.mainComments
+                ...this.state.mainComments,
             ]
         });
         document.getElementById(commentId).innerText="";
     };
+
+    callbackToOtherComments = (newComment,indexNum) => {
+        var allMainComments = this.state.mainComments.slice();
+        allMainComments[indexNum].subComments.splice(0,0,newComment);
+        console.log(allMainComments);
+        this.setState({
+            mainComments:allMainComments
+        })
+    }
+    
+    callbackToReplyToOtherComments = (newComment,subIndexNum,mainIndexNum) => {
+        var allMainComments = this.state.mainComments.slice();
+        allMainComments[mainIndexNum].subComments.splice(subIndexNum+1,0,newComment);
+        console.log(allMainComments);
+        this.setState({
+            mainComments:allMainComments
+        })
+    }
 
     componentWillUpdate(){
         console.log(this.state.mainComments);
@@ -93,6 +111,7 @@ class ReactionsCount extends Component {
 
     render(){
         var commentsToRender=null;
+        var mainCommentindexId=0;
         if(this.state.show){
             commentsToRender = (<Auxillary>
                                     <div className={classes.commentDiv}>
@@ -105,7 +124,12 @@ class ReactionsCount extends Component {
                                         </div>
                                     </div>
                                     <button className={classes.postCommentBtn} onClick={this.postCommentHandler}>Post</button>
-                                    { this.state.mainComments.map((eachMainComment) => (<OtherComments mainCommentData={eachMainComment} postIdProp={this.state.postId}/>))}
+                                    {this.state.mainComments.map((eachMainComment) => (<OtherComments 
+                                                                                            mainCommentData={eachMainComment} 
+                                                                                            postIdProp={this.state.postId} 
+                                                                                            parentCallBack={this.callbackToOtherComments} 
+                                                                                            indexNum={mainCommentindexId++} 
+                                                                                            parentCallBackToReplyToOtherComments={this.callbackToReplyToOtherComments}/>))}
                                 </Auxillary>);
         }
         return(
