@@ -5,7 +5,7 @@ import LfrmMImg from '../assets/images/LfrmM.png';
 import PostModal from './PostModal';
 import defaultProfilePic from '../assets/images/defaultProfilePic.png';
 import UserPosts from './UserPosts';
-import request from "superagent";
+import request, { post } from "superagent";
 import debounce from "lodash.debounce";
 
 
@@ -150,10 +150,42 @@ class HomePage extends Component {
         this.loadUsers();
     } 
 
+    callBackToPostModal=(mistake,learning)=>{
+        const postFromModal = 
+            {
+                postId:5456,
+                profileName: "My Profile",
+                designation: "My Desig",
+                institute: "My Insti",
+                mistake: mistake,
+                learning: learning,
+                saved: false,
+                viewed: false,
+                learnedCount: 0,
+                appreciateCount:0,
+                shareCount:0,
+                commentCount:0,
+                learnedClicked:false,
+                appreciateClicked:false,
+                shareClicked:false,
+                loadMoreComments:false,
+                mainComments:[]
+            }
+        
+        var postsAlreadyInState=this.state.post.slice();
+        console.log(postsAlreadyInState);
+        postsAlreadyInState.push(postFromModal);
+        console.log(postsAlreadyInState);
+        this.setState({
+            post:postsAlreadyInState
+        })
+
+    }
+
     render(){
         var modal=null;
         if(this.state.postingNewPost){
-            modal=<PostModal parentMethod={this.postingCancelHandler} postingPost={this.state.postingNewPost}/>
+            modal=<PostModal modalClose={this.postingCancelHandler} postingPost={this.state.postingNewPost} newPost={this.callBackToPostModal}/>
         }
         return(
             <Auxillary>

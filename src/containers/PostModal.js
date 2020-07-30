@@ -7,12 +7,12 @@ import linkIcon from '../assets/images/linkIcon.png';
 class PostModal extends Component {
 
     state={
-        selectedFile:null
+        selectedFileMistake:null,
+        selectedFileLearning:null
     }
 
     componentDidMount(){
-        document.getElementById('editable1').focus();
-        // this.fileSelector = this.buildFileSelector();
+        document.getElementById('mistake').focus();
     }   
     
     constructor(props) {
@@ -21,24 +21,43 @@ class PostModal extends Component {
 
     closeModalHandler = () => {
         console.log('clicked');
-        this.props.parentMethod();
+        this.props.modalClose();
     }
 
     closeModalHandler = (event) => {
         event.stopPropagation();
-        this.props.parentMethod();
+        this.props.modalClose();
     }
 
-    fileSelectedHandler = (event) => {
+    fileSelectedHandlerMistake = (event) => {
         const reader = new FileReader();
         reader.onload = () => {
             if(reader.readyState==2){
                 this.setState({
-                    selectedFile:reader.result
+                    selectedFileMistake:reader.result
                 })
             }
         }
         reader.readAsDataURL(event.target.files[0]);
+    }
+    
+    fileSelectedHandlerLearning = (event) => {
+        const reader = new FileReader();
+        reader.onload = () => {
+            if(reader.readyState==2){
+                this.setState({
+                    selectedFileLearning:reader.result
+                })
+            }
+        }
+        reader.readAsDataURL(event.target.files[0]);
+    }
+
+    postingHandler = (event) => {
+        var mistakeData=document.getElementById("mistake").innerText;
+        var learningData=document.getElementById("learning").innerText;
+        this.props.newPost(mistakeData,learningData);
+        this.closeModalHandler(event);
     }
       
     render(){
@@ -57,32 +76,26 @@ class PostModal extends Component {
                         </h4>
                         <div 
                             className={classes.contentDiv} 
-                            id="editable1" 
+                            id="mistake" 
                             contentEditable = "true" 
                             placeholder="Express your mistake if any, else post your learning below." 
                             style={{paddingLeft: '10px'}}>
-                            {this.state.selectedFile ? <img src={this.state.selectedFile} width="100px" height="100px"/> : null }
+                            {this.state.selectedFileMistake ? <img src={this.state.selectedFileMistake} width="100px" height="100px"/> : null }
                         </div>
                         <div className={classes.attachments}>
                             <input 
                                 type="file" 
                                 style={{display:'none'}}
-                                onChange={this.fileSelectedHandler} 
+                                onChange={this.fileSelectedHandlerMistake} 
                                 accept="image/*"
-                                ref={fileInput => this.fileInput = fileInput} />
+                                ref={fileInput1 => this.fileInput1 = fileInput1} />
                             <img 
                                 src={imageUploadIcon} 
                                 alt="Upload Image" 
                                 height="20"
                                 width="30"
-                                onClick={()=>this.fileInput.click()}
+                                onClick={()=>this.fileInput1.click()}
                                 />
-                            <img 
-                            src={linkIcon} 
-                            alt="Upload Image" 
-                            height="20"
-                            width="30"
-                            />
                         </div>
                     </div>
                     <div>
@@ -92,35 +105,42 @@ class PostModal extends Component {
                         <div 
                             className={classes.contentDiv}  
                             contentEditable = "true" 
+                            id="learning"
                             placeholder="Hurray... I learned this new thing and hope it helps y'all. " 
                             style={{paddingLeft: '10px'}}>
+                            {this.state.selectedFileLearning ? <img src={this.state.selectedFileLearning} width="100px" height="100px"/> : null }
                         </div>
                         <div className={classes.attachments}>
                             <input 
                                 type="file" 
                                 style={{display:'none'}}
-                                onChange={this.fileSelectedHandler} 
+                                onChange={this.fileSelectedHandlerLearning} 
                                 accept="image/*"
-                                ref={fileInput => this.fileInput = fileInput} />
+                                ref={fileInput2 => this.fileInput2 = fileInput2} />
                             <img 
                                 src={imageUploadIcon} 
                                 alt="Upload Image" 
                                 height="20"
                                 width="30"
-                                onClick={()=>this.fileInput.click()}
+                                onClick={()=>this.fileInput2.click()}
                                 />
-                            <img 
-                                src={linkIcon} 
-                                alt="Upload Image" 
-                                height="20"
-                                width="30"
-                                />
+                        </div>
+                    </div>
+                    <div>
+                        <h4 style={{marginTop: "15px", marginBottom: "3px", textAlign: 'left', paddingLeft: '10px'}}>
+                            <span className={classes.yellowFont2}>#HashTags</span>
+                        </h4>
+                        <div 
+                            className={classes.contentDiv}  
+                            contentEditable = "true" 
+                            placeholder="Place Hashtags to reach appropriate audience." 
+                            style={{paddingLeft: '10px'}}>
                         </div>
                     </div>
                     <div>
                         <input type="checkbox" id="anonymous" name="anonymousChkBtn" value="Anonymous" style={{marginTop:"10px"}} />
                         <label for="anonymous" style={{color:"gray",fontSize:"13px"}}>Post as Anonymous</label>
-                        <button className={classes.postBtn}>Post</button>
+                        <button className={classes.postBtn} onClick={this.postingHandler}>Post</button>
                     </div>
             </Modal>
 
