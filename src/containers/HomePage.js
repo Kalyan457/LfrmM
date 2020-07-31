@@ -20,7 +20,7 @@ class HomePage extends Component {
             error: false,
             hasMore: true,
             isLoading: false,
-            postIdUsedforIncrementing:0
+            postIdUsedforIncrementing:0,
         }
 
         window.onscroll = debounce(() => {
@@ -40,7 +40,7 @@ class HomePage extends Component {
     }
     
   
-    loadUsers = () => {
+    loadUsers = (somedata) => {
        const nextPosts = [
                 {
                     postId:this.state.postIdUsedforIncrementing+1,
@@ -150,7 +150,7 @@ class HomePage extends Component {
         this.loadUsers();
     } 
 
-    callBackToPostModal=(mistake,learning)=>{
+    callBackToPostModal=(mistake,learning,imageMistake,imageLearning)=>{
         const postFromModal = 
             {
                 postId:5456,
@@ -158,7 +158,9 @@ class HomePage extends Component {
                 designation: "My Desig",
                 institute: "My Insti",
                 mistake: mistake,
+                mistakeImage:imageMistake,
                 learning: learning,
+                learningImage:imageLearning,
                 saved: false,
                 viewed: false,
                 learnedCount: 0,
@@ -177,12 +179,12 @@ class HomePage extends Component {
         postsAlreadyInState.push(postFromModal);
         console.log(postsAlreadyInState);
         this.setState({
-            post:postsAlreadyInState
+            post:postsAlreadyInState,
         })
-
     }
 
     render(){
+        console.log(this.state.imageMistake);
         var modal=null;
         if(this.state.postingNewPost){
             modal=<PostModal modalClose={this.postingCancelHandler} postingPost={this.state.postingNewPost} newPost={this.callBackToPostModal}/>
@@ -272,13 +274,13 @@ class HomePage extends Component {
                                 id="editable" 
                                 contentEditable = "true" 
                                 placeholder="Wanna share your learning...Let's post it " 
-                                style={{paddingLeft: '10px'}}>
+                                style={{paddingLeft: '10px'}}
+                                >
                             </div>
                              <button className={classes.postBtn}>Post</button>
                             {modal}
                         </div>
                         { this.state.post.map((eachPost) => (<UserPosts postData={eachPost} />))}
-
                     </div>
                 </div>
             </Auxillary>

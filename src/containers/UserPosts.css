@@ -187,3 +187,12 @@
     flex-direction: row;
     overflow: hidden;
 }
+
+.mistakeData{
+    font-family: "Open Sans";
+    padding-left: 10px;
+}
+
+.imgMistake{
+    padding-left: 0px;
+}

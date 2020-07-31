@@ -56,7 +56,13 @@ class PostModal extends Component {
     postingHandler = (event) => {
         var mistakeData=document.getElementById("mistake").innerText;
         var learningData=document.getElementById("learning").innerText;
-        this.props.newPost(mistakeData,learningData);
+        var imageMistake=document.getElementById("imgMistake");
+        var imageLearning=document.getElementById("imgLearning");
+        console.log(mistakeData);
+        console.log(learningData);
+        console.log(imageMistake);
+        console.log(imageLearning);
+        this.props.newPost(mistakeData,learningData,imageMistake,imageLearning);
         this.closeModalHandler(event);
     }
       
@@ -80,7 +86,7 @@ class PostModal extends Component {
                             contentEditable = "true" 
                             placeholder="Express your mistake if any, else post your learning below." 
                             style={{paddingLeft: '10px'}}>
-                            {this.state.selectedFileMistake ? <img src={this.state.selectedFileMistake} width="100px" height="100px"/> : null }
+                            {this.state.selectedFileMistake ? <img id="imgMistake" src={this.state.selectedFileMistake} width="100px" height="100px"/> : null }
                         </div>
                         <div className={classes.attachments}>
                             <input 
@@ -108,7 +114,7 @@ class PostModal extends Component {
                             id="learning"
                             placeholder="Hurray... I learned this new thing and hope it helps y'all. " 
                             style={{paddingLeft: '10px'}}>
-                            {this.state.selectedFileLearning ? <img src={this.state.selectedFileLearning} width="100px" height="100px"/> : null }
+                            {this.state.selectedFileLearning ? <img id="imgLearning" src={this.state.selectedFileLearning} width="100px" height="100px"/> : null }
                         </div>
                         <div className={classes.attachments}>
                             <input 

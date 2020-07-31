@@ -22,6 +22,9 @@ class UserPosts extends Component {
         this.setState({show:false});
     }
     
+    componentDidMount(){
+        console.log(this.props.postData);
+    }
 
     render(){
         if(this.state.show)
@@ -57,13 +60,17 @@ class UserPosts extends Component {
                     <h4 style={{marginTop: "15px", marginBottom: "3px", textAlign: 'left', paddingLeft: '10px'}}>
                         <span className={classes.redFont}>#Mistake</span>
                     </h4>
-                    <p style={{paddingLeft: '10px'}}>{this.props.postData.mistake}</p>
+                    <pre className={classes.mistakeData}>{this.props.postData.mistake}
+                        {this.props.postData.mistakeImage ? <img src={this.props.postData.mistakeImage.src} width="100%" height="70%" className={classes.imgMistake} /> : null }
+                    </pre>
                 </div>
                 <div>
                     <h4 style={{marginTop: "15px", marginBottom: "3px", textAlign: 'left', paddingLeft: '10px'}}>
                         <span className={classes.greenFont}>#Learning</span>
                     </h4>
-                    <p style={{paddingLeft: '10px'}}>{this.props.postData.learning}</p>
+                    <pre className={classes.mistakeData}>{this.props.postData.learning}
+                        {this.props.postData.learningImage ? <img src={this.props.postData.learningImage.src} width="100%" height="70%" className={classes.imgMistake} /> : null }
+                    </pre>
                 </div>
                 <ReactionsCount reactionCountData = {this.props.postData} />
              </div>
