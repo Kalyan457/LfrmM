@@ -2,19 +2,130 @@ import React,{Component} from 'react';
 import classes from './ProfilePage.css';
 import Auxillary from '../hoc/Auxillary';
 import defaultProfilePic from '../assets/images/defaultProfilePic.png';
+import debounce from "lodash.debounce";
+import UserPosts from './UserPosts';
 
 class ProfilePage extends Component{
-    state={
-        selectedInterests:[],
-        firstName:"aaaa",
-        lastName:"bbbb",
-        email:"abc@abc.com",
-        designation:"student",
-        institute:"UTD",
-        password:null,
-        profileImage:defaultProfilePic
+
+    constructor(props){
+        super(props);
+        this.state={
+            selectedInterests:[],
+            firstName:"aaaa",
+            lastName:"bbbb",
+            email:"abc@abc.com",
+            designation:"student",
+            institute:"UTD",
+            password:null,
+            profileImage:defaultProfilePic,
+            post:[],
+            error: false,
+            hasMore: true,
+            isLoading: false,
+            postIdUsedforIncrementing:0,
+        }
+
+        window.onscroll = debounce(() => {
+            const {
+            loadUsers,
+            state: {
+                error,
+                isLoading,
+                hasMore,
+            },
+            } = this;
+            if (error || isLoading || !hasMore) return;
+            if (window.innerHeight + document.documentElement.scrollTop === document.documentElement.offsetHeight) {
+                loadUsers();
+            }
+        }, 100);
     }
     
+    
+    loadUsers = () => {
+        const nextPosts = [
+                 {
+                     postId:this.state.postIdUsedforIncrementing+1,
+                     profileName: "My Profile",
+                     designation: "My Desig",
+                     institute: "My Insti",
+                     mistake: "This is My Mistake. I made it",
+                     mistakeImage:null,
+                     learning: "This is My Learning. I learned it",
+                     learningImage:null,
+                     saved: true,
+                     viewed: false,
+                     learnedCount: 2,
+                     appreciateCount:3,
+                     shareCount:4,
+                     commentCount:6,
+                     learnedClicked:true,
+                     appreciateClicked:true,
+                     shareClicked:false,
+                     loadMoreComments:false,
+                     mainComments:[
+                         {
+                             commentId:this.state.postIdUsedforIncrementing+1,
+                             profileName: "PName",
+                             designation: "Desig",
+                             institute: "Inst",
+                             comment:"This is My Comment1 from state",
+                             loadMoreSubComments: false,
+                             subComments:[
+                                 {
+                                     commentId:this.state.postIdUsedforIncrementing+1,
+                                     profileName: "PNameSub",
+                                     designation: "DesigSub",
+                                     institute: "InstSub",
+                                     comment:"This is sub comment1"
+                                 },
+                                 {
+                                     commentId:this.state.postIdUsedforIncrementing+2,
+                                     profileName: "PNameSub",
+                                     designation: "DesigSub",
+                                     institute: "InstSub",
+                                     comment:"This is sub comment2"
+                                 }
+                             ]
+                         },
+                         {
+                             commentId:this.state.postIdUsedforIncrementing+2,
+                             profileName: "PName",
+                             designation: "Desig",
+                             institute: "Inst",
+                             comment:"This is My Comment2 from state",
+                             loadMoreSubComments: false,
+                             subComments:[
+                                 {
+                                     commentId:this.state.postIdUsedforIncrementing+3,
+                                     profileName: "PNameSub",
+                                     designation: "DesigSub",
+                                     institute: "InstSub",
+                                     comment:"This is sub comment3"
+                                 },
+                                 {
+                                     commentId:this.state.postIdUsedforIncrementing+4,
+                                     profileName: "PNameSub",
+                                     designation: "DesigSub",
+                                     institute: "InstSub",
+                                     comment:"This is sub comment4"
+                                 }
+                             ]
+                         }     
+                     ]
+                 }
+             ]
+             this.setState({
+                 hasMore: (this.state.post.length < 100),
+                 isLoading: false,
+                 post: [
+                 ...this.state.post,
+                 ...nextPosts,
+                 ],
+                 postIdUsedforIncrementing:this.state.postIdUsedforIncrementing+1
+             });
+    }
+
     interestBtnHandler = (event) => {
         event.preventDefault();
         var selectedBtnId=event.target.id;
@@ -81,6 +192,7 @@ class ProfilePage extends Component{
     }
 
     componentDidMount(){
+        this.loadUsers();
         document.getElementById("fname").value=this.state.firstName;
         document.getElementById("lname").value=this.state.lastName;
         document.getElementById("designation").value=this.state.designation;
@@ -88,12 +200,32 @@ class ProfilePage extends Component{
         document.getElementById("email").value=this.state.email;
     }
 
+    showPostsHandler = (event) => {
+        document.getElementById("posts").style.display="block";
+        document.getElementById("profile").style.display="none";
+        document.getElementById("interests").style.display="none";
+    }
+    
+    showInterestsHandler = (event) => {
+        document.getElementById("interests").style.display="block";
+        document.getElementById("profile").style.display="none";
+        document.getElementById("posts").style.display="none";
+    }
+    
+    showProfileHandler = (event) => {
+        document.getElementById("profile").style.display="block";
+        document.getElementById("interests").style.display="none";
+        document.getElementById("posts").style.display="none";
+    }
+
     render(){
+        console.log(this.state.post);
         return(
             <Auxillary>
                 <div className={classes.profileDiv}>
                     <div className={classes.profileImageDiv}>
                         <img src={this.state.profileImage}  className={classes.profileImage} />
+                        <span onClick={()=>this.fileInput1.click()} style={{cursor:"pointer"}}>&#9998;</span>
                     </div>
                     <input 
                         type="file" 
@@ -101,8 +233,13 @@ class ProfilePage extends Component{
                         onChange={this.fileSelectedHandlerProfileImage} 
                         accept="image/*"
                         ref={fileInput1 => this.fileInput1 = fileInput1} />
-                    <span onClick={()=>this.fileInput1.click()} style={{cursor:"pointer"}}>&#9998;</span>
-                    <form name="profileForm">
+                    <div className={classes.choiceBtnsDiv}>
+                        <button className={classes.choiceBtns} onClick={this.showPostsHandler}>Posts</button>
+                        <button className={classes.choiceBtns} onClick={this.showInterestsHandler}>Interests</button>
+                        <button className={classes.choiceBtns} onClick={this.showProfileHandler}>Profile</button>
+                        <hr style={{marginTop:"0px"}}></hr>
+                    </div>
+                    <form name="profileForm" id="profile" className={classes.profile}>
                         <div className={classes.NamesDiv}>
                             <div style={{marginBottom:"2%"}}>
                                 <input className={classes.input} id="fname" disabled type="text" name="fname" /> 
@@ -133,6 +270,8 @@ class ProfilePage extends Component{
                                 <span onClick={this.editInstituteHandler} style={{cursor:"pointer"}}>&#9998;</span> 
                             </div>
                         </div>
+                    </form>
+                    <div id="interests" className={classes.interests}>
                         <div className={classes.interestsDiv}>
                             <button 
                                 type="button"
@@ -170,11 +309,11 @@ class ProfilePage extends Component{
                                 value="6" 
                                 id="interest_btn_6"
                                 onClick={this.interestBtnHandler.bind(this)}>Cloud Computing</button>
-                            <button 
-                                className={classes.saveChangesBtn}
-                                onClick={this.saveChangesButtonHandler}>Save</button> 
-                        </div>   
-                    </form>
+                        </div>
+                    </div>
+                    <div id="posts">
+                    { this.state.post.map((eachPost) => (<UserPosts key={eachPost.postId} postData={eachPost} />))}
+                    </div>
                 </div>
             </Auxillary>
         );

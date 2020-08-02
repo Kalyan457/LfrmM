@@ -40,7 +40,7 @@ class HomePage extends Component {
     }
     
   
-    loadUsers = (somedata) => {
+    loadUsers = () => {
        const nextPosts = [
                 {
                     postId:this.state.postIdUsedforIncrementing+1,
@@ -287,7 +287,7 @@ class HomePage extends Component {
                                 style={{paddingLeft: '10px'}}
                                 >
                             </div>
-                             <button className={classes.postBtn}>Post</button>
+                            <button className={classes.postBtn}>Post</button>
                             {modal}
                         </div>
                         { this.state.post.map((eachPost) => (<UserPosts key={eachPost.postId} postData={eachPost} />))}
