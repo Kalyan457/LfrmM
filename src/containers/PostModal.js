@@ -33,9 +33,8 @@ class PostModal extends Component {
         const reader = new FileReader();
         reader.onload = () => {
             if(reader.readyState==2){
-                this.setState({
-                    selectedFileMistake:reader.result
-                })
+                var imageCode = '<img src="'+reader.result+'" width="100%" height="70%" />';
+                document.getElementById("mistake").innerHTML += imageCode;
             }
         }
         reader.readAsDataURL(event.target.files[0]);
@@ -86,7 +85,6 @@ class PostModal extends Component {
                             contentEditable = "true" 
                             placeholder="Express your mistake if any, else post your learning below." 
                             style={{paddingLeft: '10px'}}>
-                            {this.state.selectedFileMistake ? <img id="imgMistake" src={this.state.selectedFileMistake} width="100px" height="100px"/> : null }
                         </div>
                         <div className={classes.attachments}>
                             <input 
@@ -140,7 +138,7 @@ class PostModal extends Component {
                             className={classes.contentDiv}  
                             contentEditable = "true" 
                             placeholder="Place Hashtags to reach appropriate audience." 
-                            style={{paddingLeft: '10px'}}>
+                            style={{paddingLeft: '10px',minHeight:'50px'}}>
                         </div>
                     </div>
                     <div>

@@ -74,6 +74,7 @@ class OtherComments extends Component{
                     {replyToMainComment}
                 </div>
                 {this.props.mainCommentData.subComments.map((eachSubComment) => (<ReplyToOtherComment 
+                                                                                    key={eachSubComment.commentId}
                                                                                     replyToOtherCommentData={eachSubComment} 
                                                                                     subIndexNum={subCommentIndexId++} 
                                                                                     callback={this.props.parentCallBackToReplyToOtherComments} 

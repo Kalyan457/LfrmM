@@ -48,7 +48,9 @@ class HomePage extends Component {
                     designation: "My Desig",
                     institute: "My Insti",
                     mistake: "This is My Mistake. I made it",
+                    mistakeImage:null,
                     learning: "This is My Learning. I learned it",
+                    learningImage:null,
                     saved: true,
                     viewed: false,
                     learnedCount: 2,
@@ -146,14 +148,13 @@ class HomePage extends Component {
     }
 
     componentDidMount(){
-        document.getElementById('editable').focus();
         this.loadUsers();
     } 
 
     callBackToPostModal=(mistake,learning,imageMistake,imageLearning)=>{
         const postFromModal = 
             {
-                postId:5456,
+                postId:this.state.postIdUsedforIncrementing+1,
                 profileName: "My Profile",
                 designation: "My Desig",
                 institute: "My Insti",
@@ -175,11 +176,10 @@ class HomePage extends Component {
             }
         
         var postsAlreadyInState=this.state.post.slice();
-        console.log(postsAlreadyInState);
-        postsAlreadyInState.push(postFromModal);
-        console.log(postsAlreadyInState);
+        postsAlreadyInState.splice(0,0,postFromModal);
         this.setState({
             post:postsAlreadyInState,
+            postIdUsedforIncrementing:this.state.postIdUsedforIncrementing+1
         })
     }
 
@@ -258,7 +258,17 @@ class HomePage extends Component {
                                     <span className={classes.yellowFont2}>and </span>
                                     <span className={classes.redFont}>Innovate</span>
                                 </h4>
-                                <span style={{fontSize:'20px', color:'gray'}}>&#10077;</span><span style={{fontSize:'15px', color:'gray'}}> There is absolutely nothing you can't get through. You just have to decide and belive that you can do.</span> <span style={{fontSize:'20px', color:'gray'}}>&#10078;</span>
+                                <span style={{fontSize:'20px', color:'gray'}}>&#10077;</span>
+                                <span style={{fontSize:'15px', color:'gray'}}> 
+                                    There is absolutely nothing you can't get through. You just have to decide and belive that you can do.
+                                </span> 
+                                <span style={{fontSize:'20px', color:'gray'}}>&#10078;</span>
+                                <br></br>
+                                <span style={{fontSize:'20px', color:'gray'}}>&#10077;</span>
+                                <span style={{fontSize:'15px', color:'gray'}}> 
+                                    There is no Plan B. If you need it, it should be, making your Plan A work
+                                </span> 
+                                <span style={{fontSize:'20px', color:'gray'}}>&#10078;</span>
                                 <h5>Look at what the people like you achieved, get inspired by them and start innovating.</h5>
                             </div>
                         </div>
@@ -280,7 +290,7 @@ class HomePage extends Component {
                              <button className={classes.postBtn}>Post</button>
                             {modal}
                         </div>
-                        { this.state.post.map((eachPost) => (<UserPosts postData={eachPost} />))}
+                        { this.state.post.map((eachPost) => (<UserPosts key={eachPost.postId} postData={eachPost} />))}
                     </div>
                 </div>
             </Auxillary>

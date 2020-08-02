@@ -1,0 +1,104 @@
+.profileDiv{
+    width: 40vw;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.profileImageDiv{
+    border-radius: 50%;
+    width: 30%;
+    height: 30%;
+    align-items: center;
+    margin: auto;
+    padding-top: 2%;
+}
+
+.profileImage{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.input {
+    width: 80%;
+    padding: 12px 20px;
+    border: 1px solid rgb(60, 154, 84);
+    box-sizing: border-box;
+    border-radius: 5px;
+    display: inline-block;
+    margin-left: 2%;
+}
+
+.input:focus {
+    border-color: rgb(244, 166, 13);
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgb(244, 166, 13, .6);
+            box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px  rgb(244, 166, 13, .6);
+}
+
+.interestsDiv{
+    margin-left: 3%;
+}
+
+.interestButton{
+    background-color: transparent;
+    padding: 1%;
+    margin: 2%;
+    border: 1px solid rgb(60, 154, 84);
+    color: rgb(60, 154, 84);
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 0px;
+    outline: none;
+}
+
+.interestButton:hover{
+    background-color: rgb(60, 154, 84);
+    color: white;
+}
+
+.saveChangesBtn{
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    cursor: pointer;
+    width: 30%;
+    margin: auto;
+    margin-top: 8px;
+    border-radius: 5px ;
+    font-family: 'Open Sans';
+    font-weight: 600;
+    font-size: 14px;
+    display: block;
+    outline: none;
+}
+
+.saveChangesBtn:hover {
+    opacity: 0.8;
+}
+
+.NamesDiv{
+    display: flex;
+    flex-direction: row;
+    margin-top: 2%;    
+    margin-left: 9%;
+    margin-bottom: 2%;
+}
+
+/* Media Queries */
+
+@media (max-width:600px){
+    .NamesDiv{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .saveChangesBtn{
+        font-size: 14px;
+        width: 50%;
+    }
+}

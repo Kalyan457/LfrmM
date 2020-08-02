@@ -14,16 +14,8 @@ class UserPosts extends Component {
         mainComments: this.props.postData.mainComments
     }
     
-    postCommentHandler = () => {
-        
-    }
-    
     reportBtnHandler = () => {
         this.setState({show:false});
-    }
-    
-    componentDidMount(){
-        console.log(this.props.postData);
     }
 
     render(){

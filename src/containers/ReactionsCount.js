@@ -125,6 +125,7 @@ class ReactionsCount extends Component {
                                     </div>
                                     <button className={classes.postCommentBtn} onClick={this.postCommentHandler}>Post</button>
                                     {this.state.mainComments.map((eachMainComment) => (<OtherComments 
+                                                                                            key={eachMainComment.commentId}
                                                                                             mainCommentData={eachMainComment} 
                                                                                             postIdProp={this.state.postId} 
                                                                                             parentCallBack={this.callbackToOtherComments} 
@@ -139,8 +140,6 @@ class ReactionsCount extends Component {
                             className={classes.postReactionsCount}>{this.state.learnedCount} &#128161;</span>
                         <span 
                             className={classes.postReactionsCount}>{this.state.appreciateCount} &#128079;</span>
-                        <span 
-                            className={classes.postReactionsCount}>{this.state.shareCount} &#10150;</span>
                         <span 
                             className={classes.postReactionsCount}>{this.state.commentCount} <FontAwesomeIcon icon={faCommentAlt} color="gray" size="xs" /></span>
                     </div>
