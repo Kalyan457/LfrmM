@@ -86,3 +86,11 @@
     margin-bottom: 1%;
     outline: none;
   }
+
+  /* Media Queries */
+  @media (max-width:600px){
+    .commentsFromDB{
+        width: 75%;
+    }
+ }
+  

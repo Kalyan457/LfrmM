@@ -9,6 +9,7 @@ body{
     left: 0;
     right: 0;
     top: 0;
+    border-bottom: 1px solid #eee;
 }
 
 .container {
@@ -22,12 +23,17 @@ body{
     top: 50px;
     left: 0;
     width: 20%;
-    height: 1000px;
+    height: 100vh;
     background: white;
     display: flex;
     flex-direction: column;
     border: 1px solid #eee;
-    text-align: center;
+}
+
+.menuItemsDiv{
+    background-color:white;
+    padding-top: 10px;
+    padding-left: 10%;
 }
 
 .right {
@@ -35,7 +41,7 @@ body{
     top: 50px;
     right: 0;
     width: 28%;
-    height: 1000px;
+    height: 100vh;
     background: white;
     border: 1px solid #eee;
 }
@@ -48,11 +54,24 @@ body{
 }
 
 .sideMenu{
-    font-weight: bold;
-    padding: 2%;
-    text-decoration: none;
-    color: black;
-    margin-top: 5%;
+    padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 16px;
+  color: rgb(51, 50, 50);
+  display: block;
+}
+
+.sideMenu:hover{
+    /* background-image: -webkit-gradient( linear, left top, right top, color-stop(0, rgb(60, 154, 84)), color-stop(0.15, rgb(60, 154, 84)), color-stop(0.3, rgb(60, 154, 84)), color-stop(0.45, rgb(244, 157, 13)), color-stop(0.6, rgb(244, 157, 13)),color-stop(0.75, rgb(219, 29, 54)), color-stop(0.9, rgb(219, 29, 54)), color-stop(1, rgb(219, 29, 54)) );
+  background-image: gradient( linear, left top, right top, color-stop(0, rgb(60, 154, 84)), color-stop(0.15, rgb(60, 154, 84)), color-stop(0.3, rgb(60, 154, 84)), color-stop(0.45, rgb(244, 157, 13)), color-stop(0.6, rgb(244, 157, 13)),color-stop(0.75, rgb(219, 29, 54)), color-stop(0.9, rgb(219, 29, 54)), color-stop(1, rgb(219, 29, 54)) );
+  color:transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  font-weight: bold; */
+  color: gray;
+}
+.menuItemText{
+    padding-left: 15%;
 }
 
 .searchInput{
@@ -67,7 +86,13 @@ body{
 .logoutLink{
     position:absolute;
     margin-left:80%;
-    margin-top:0.5%;
+    margin-top: 1%;
+    cursor: pointer;
+    color: gray;
+}
+
+.logoutLink:hover{
+    color: #ccc;
 }
 
 .postLearning{
@@ -95,10 +120,6 @@ body{
     margin-bottom: 1%;
     outline: none;
 }
-/* 
-.postBtn:hover {
-    opacity: 0.8;
-} */
 
 [contenteditable=true]:empty:before{
   content: attr(placeholder);
@@ -134,7 +155,6 @@ body{
     overflow: hidden;
 }
 
-
 .clear{
     clear: both;
 }
@@ -164,4 +184,53 @@ body{
   color:transparent;
   -webkit-background-clip: text;
   background-clip: text;
+}
+
+.mobileViewMenuDiv{
+    display: none;
+}
+
+.logoutLinkMobile{
+    display: none;
+}
+
+
+/*Media Queries*/
+@media (max-width:600px){
+    .left{
+        display: none;
+    }
+    .right{
+        display: none;
+    }
+    .middle{
+        margin-left: 0%;
+        margin-right: 0%;
+    }
+    .logoutLink{
+        display: none;
+    }
+    .logoutLinkMobile{
+        display: block;
+        margin-left:90%;
+    }
+
+    .mobileViewMenuDiv{
+        display: flex;
+        bottom: 0;
+        position: fixed;
+        width: 100%;
+        justify-content: space-between;
+        background-color: white;
+        border-top: 1px solid #ccc;
+        padding: 2%;
+    }
+
+    .postLearning{
+        width: 100%;
+    }
+
+    .header{
+        border-bottom: 1px solid #ccc;
+    }
 }

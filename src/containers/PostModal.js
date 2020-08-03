@@ -69,7 +69,6 @@ class PostModal extends Component {
 
         return(
             <Modal show={this.props.postingPost}>
-                
                     <h2 style={{borderBottom:"1px solid rgba(0,0,0,0.15)",paddingBottom:"10px",margin:"0px",paddingTop:"10px"}}>
                         <span className={classes.yellowFont2}>Post </span>
                         <span className={classes.greenFont}>Learning</span>

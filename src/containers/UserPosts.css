@@ -196,3 +196,10 @@
 .imgMistake{
     padding-left: 0px;
 }
+
+/*Media Queries*/
+@media (max-width:600px){
+    .userPosts{
+        width: 100%;
+    }
+}

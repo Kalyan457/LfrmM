@@ -270,6 +270,9 @@ class ProfilePage extends Component{
                                 <span onClick={this.editInstituteHandler} style={{cursor:"pointer"}}>&#9998;</span> 
                             </div>
                         </div>
+                        <button 
+                                className={classes.saveBtn}
+                                onClick={this.profileSaveButtonHandler}>Save</button>
                     </form>
                     <div id="interests" className={classes.interests}>
                         <div className={classes.interestsDiv}>
@@ -309,6 +312,9 @@ class ProfilePage extends Component{
                                 value="6" 
                                 id="interest_btn_6"
                                 onClick={this.interestBtnHandler.bind(this)}>Cloud Computing</button>
+                            <button 
+                                className={classes.saveBtn}
+                                onClick={this.interestSaveButtonHandler}>Save</button> 
                         </div>
                     </div>
                     <div id="posts">

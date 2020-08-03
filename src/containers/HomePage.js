@@ -4,10 +4,15 @@ import classes from './HomePage.css';
 import LfrmMImg from '../assets/images/LfrmM.png';
 import PostModal from './PostModal';
 import defaultProfilePic from '../assets/images/defaultProfilePic.png';
+import homeIcon from '../assets/images/homeIcon.png';
+import learningIcon from '../assets/images/learningIcon.jpg';
+import notificationIcon from '../assets/images/notificationIcon.png';
+import savedIcon from '../assets/images/savedIcon.png';
 import UserPosts from './UserPosts';
 import request, { post } from "superagent";
 import debounce from "lodash.debounce";
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHome,faGraduationCap,faSave,faBell,faUser,faHashtag,faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 
 class HomePage extends Component {
 
@@ -200,57 +205,103 @@ class HomePage extends Component {
                             width="100"
                             style={{position:'absolute'}} />
                         <input className={classes.searchInput} type="text" name="searchInp" placeholder="Search..." />   
-                        <a className={classes.logoutLink}>Logout</a> 
+                        <a className={classes.logoutLink}>
+                            <FontAwesomeIcon icon={faSignOutAlt} size="s"/>
+                            Logout</a> 
+                        <a className={classes.logoutLinkMobile}>
+                            <FontAwesomeIcon icon={faSignOutAlt} size="lg"/>
+                        </a> 
                         <div className={classes.container}>
                             <div className={classes.left}>
-                                <a 
-                                    className={classes.sideMenu} 
-                                    href="#" 
-                                    id="menu_1" 
-                                    style={{color:'green'}}
-                                    onClick={this.menuItemClickHandler.bind(this)}>
-                                    <span className={classes.rainbow}>Home</span></a>
-                                <a 
-                                    className={classes.sideMenu} 
-                                    href="#" 
-                                    id="menu_2"
-                                    onClick={this.menuItemClickHandler.bind(this)} >
-                                    #MyLearnings</a>
-                                 <a 
-                                    className={classes.sideMenu} 
-                                    href="#" 
-                                    id="menu_3"
-                                    onClick={this.menuItemClickHandler.bind(this)} >#Saved</a>
-                                <a 
-                                    className={classes.sideMenu} 
-                                    href="#" 
-                                    id="menu_4"
-                                    onClick={this.menuItemClickHandler.bind(this)} >#Interest1</a>
-                                <a 
-                                    className={classes.sideMenu} 
-                                    href="#" 
-                                    id="menu_5"
-                                    onClick={this.menuItemClickHandler.bind(this)} >#Interest2</a>
-                                <a 
-                                    className={classes.sideMenu} 
-                                    href="#" 
-                                    id="menu_6"
-                                    onClick={this.menuItemClickHandler.bind(this)} >#Interest3</a>
-                                <a 
-                                    className={classes.sideMenu} 
-                                    href="#" 
-                                    id="menu_7" 
-                                    onClick={this.menuItemClickHandler.bind(this)}>Notifications</a>
-                                <a 
-                                    className={classes.sideMenu} 
-                                    href="#" 
-                                    id="menu_8"
-                                    onClick={this.menuItemClickHandler.bind(this)} >Messages</a>
-                                <a 
-                                    className={classes.sideMenu} 
-                                    href="#" 
-                                    id="menu_9"
-                                    onClick={this.menuItemClickHandler.bind(this)} >Profile</a>
+                                <div className={classes.menuItemsDiv}>
+                                    <a 
+                                        className={classes.sideMenu} 
+                                        href="#" 
+                                        id="menu_1" 
+                                        onClick={this.menuItemClickHandler.bind(this)}>
+                                        <div style={{width:"10px", height:"0px"}}>
+                                            <FontAwesomeIcon icon={faHome} size="s"/>
+                                        </div>
+                                        <span className={classes.menuItemText}>Home</span></a>
+                                </div>
+                                <div className={classes.menuItemsDiv}>
+                                    <a 
+                                        className={classes.sideMenu} 
+                                        href="#" 
+                                        id="menu_2" 
+                                        onClick={this.menuItemClickHandler.bind(this)}>
+                                        <div style={{width:"10px", height:"0px"}}>
+                                            <FontAwesomeIcon icon={faGraduationCap} size="s"/>
+                                        </div>
+                                        <span className={classes.menuItemText}>My Learnings</span></a>
+                                </div>
+                                <div className={classes.menuItemsDiv}>
+                                    <a 
+                                        className={classes.sideMenu} 
+                                        href="#" 
+                                        id="menu_3" 
+                                        onClick={this.menuItemClickHandler.bind(this)}>
+                                        <div style={{width:"10px", height:"0px"}}>
+                                            <FontAwesomeIcon icon={faSave} size="s"/>
+                                        </div>
+                                        <span className={classes.menuItemText}>Saved</span></a>
+                                </div>
+                                <div className={classes.menuItemsDiv}>
+                                    <a 
+                                        className={classes.sideMenu} 
+                                        href="#" 
+                                        id="menu_4" 
+                                        onClick={this.menuItemClickHandler.bind(this)}>
+                                        <div style={{width:"10px", height:"0px"}}>
+                                            <FontAwesomeIcon icon={faHashtag} size="s"/>
+                                        </div>
+                                        <span className={classes.menuItemText}>Interest 1</span></a>
+                                </div>
+                                <div className={classes.menuItemsDiv}>
+                                    <a 
+                                        className={classes.sideMenu} 
+                                        href="#" 
+                                        id="menu_5" 
+                                        onClick={this.menuItemClickHandler.bind(this)}>
+                                        <div style={{width:"10px", height:"0px"}}>
+                                            <FontAwesomeIcon icon={faHashtag} size="s"/>
+                                        </div>
+                                        <span className={classes.menuItemText}>Interest 2</span></a>
+                                </div>
+                                <div className={classes.menuItemsDiv}>
+                                    <a 
+                                        className={classes.sideMenu} 
+                                        href="#" 
+                                        id="menu_6" 
+                                        onClick={this.menuItemClickHandler.bind(this)}>
+                                        <div style={{width:"10px", height:"0px"}}>
+                                            <FontAwesomeIcon icon={faHashtag} size="s"/>
+                                        </div>
+                                        <span className={classes.menuItemText}>Interest 3</span></a>
+                                </div>
+                                <div className={classes.menuItemsDiv}>
+                                    <a 
+                                        className={classes.sideMenu} 
+                                        href="#" 
+                                        id="menu_7" 
+                                        onClick={this.menuItemClickHandler.bind(this)}>
+                                        <div style={{width:"10px", height:"0px"}}>
+                                            <FontAwesomeIcon icon={faBell} size="s"/>
+                                        </div>
+                                        <span className={classes.menuItemText}>Notifications</span></a>
+                                </div>
+                                <div className={classes.menuItemsDiv}>
+                                    <a 
+                                        className={classes.sideMenu} 
+                                        href="#" 
+                                        id="menu_8"
+                                        onClick={this.menuItemClickHandler.bind(this)}>
+                                        <div style={{width:"10px", height:"0px"}}>
+                                            <FontAwesomeIcon icon={faUser} size="s"/>
+                                        </div>
+                                        <span className={classes.menuItemText}>Profile</span></a>
+                                </div>
+                                
                             </div>
                             <div className={classes.right}>
                                 <h4 style={{textAlign:'center', margin:'auto',borderBottom: '1px solid rgba(0,0,0,0.15)'}}>
@@ -291,6 +342,15 @@ class HomePage extends Component {
                             {modal}
                         </div>
                         { this.state.post.map((eachPost) => (<UserPosts key={eachPost.postId} postData={eachPost} />))}
+                    </div>
+                    <div className={classes.mobileViewMenuDiv}>
+                        <div style={{width:"95%",display:"flex",justifyContent:"space-between",bottom:"0"}}>
+                            <FontAwesomeIcon icon={faSave} color="gray" size="2x"/>
+                            <FontAwesomeIcon icon={faGraduationCap} color="gray" size="2x"/>
+                            <FontAwesomeIcon icon={faHome} color="gray" size="2x"/>
+                            <FontAwesomeIcon icon={faBell} color="gray" size="2x"/>
+                            <FontAwesomeIcon icon={faUser} color="gray" size="2x"/>
+                        </div>
                     </div>
                 </div>
             </Auxillary>

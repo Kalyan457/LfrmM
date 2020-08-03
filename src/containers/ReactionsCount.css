@@ -94,3 +94,10 @@
     flex-direction: row;
     overflow: hidden;
 }
+
+/* Media Queries */
+@media (max-width:600px){
+    .placeCommentDiv{
+        width: 75%;
+    }
+ }

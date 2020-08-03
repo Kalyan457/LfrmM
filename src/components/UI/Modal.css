@@ -11,24 +11,12 @@
     overflow: visible;
     width: 40vw;
     margin-top: -9%;
-    
-  /*  display: flex;
-    flex-direction: column;
-    
-    border: 1px solid black;
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    overflow-y: auto;
-    height: auto;
-    background-color: #ffffff;*/
 }
 
-/* 
-@media (min-width: 600px) {
+ 
+@media (max-width: 600px) {
     .Modal {
-        width: 500px;
-        left: calc(50% - 250px);
+        width: 90vw;
+        left: 5%;
     }
-} */
+} 

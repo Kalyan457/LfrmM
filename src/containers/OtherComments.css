@@ -85,3 +85,10 @@
       font-size: 12px;
       color: gray;
   }
+
+  /* Media Queries */
+  @media (max-width:600px){
+    .commentsFromDB{
+        width: 75%;
+    }
+ }
