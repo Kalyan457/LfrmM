@@ -1,3 +1,160 @@
+body{
+    background: #f8f9fa;
+}
+
+.header {
+    background-color: white;
+    height: 50px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    border-bottom: 1px solid #eee;
+}
+
+.container {
+    width: 90%;
+    position: relative;
+    margin: 0 auto;
+}
+
+.left {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 20%;
+    height: 100vh;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #eee;
+}
+
+
+.middle {
+    margin-left: 23%;
+    margin-right: 30%;
+    margin-top: 50px;
+    background: #f8f9fa;
+}
+
+.searchInput{
+    margin-left: 30%;
+    width: 30%;
+    position: absolute;
+    border-radius: 15px;
+    padding: 0.5%;
+    margin-top: 0.5%;
+    outline: none;
+    border: 1.75px solid transparent;    
+    border-image: -webkit-gradient( linear, left top, right top, color-stop(0, rgb(60, 154, 84)), color-stop(0.15, rgb(60, 154, 84)), color-stop(0.3, rgb(60, 154, 84)), color-stop(0.45, rgb(244, 157, 13)), color-stop(0.6, rgb(244, 157, 13)),color-stop(0.75, rgb(219, 29, 54)), color-stop(0.9, rgb(219, 29, 54)), color-stop(1, rgb(219, 29, 54)) );
+    border-image-slice: 1;
+}
+
+.logoutLink{
+    position:absolute;
+    margin-left:80%;
+    margin-top: 1%;
+    cursor: pointer;
+    color: gray;
+}
+
+.logoutLink:hover{
+    color: #ccc;
+}
+
+.postLearning{
+    border: 1px solid #eee;
+    width: 95%;
+    margin: auto;
+    background-color:white;
+    min-height: 100px;
+}
+
+
+.postBtn{
+    background-color: #bfebc0;
+    color: white;
+    padding: 10px 10px;
+    border: none;
+    cursor: none;
+    width: 15%;
+    margin: auto;
+    margin-top: 8px;
+    border-radius: 5px ;
+    font-weight: 600;
+    font-size: 14px;
+    margin-left: 80%;
+    margin-bottom: 1%;
+    outline: none;
+}
+
+[contenteditable=true]:empty:before{
+  content: attr(placeholder);
+  pointer-events: none;
+  display: block; 
+  color: gray;
+}
+
+
+.greenFont{
+    color: rgb(60, 154, 84);
+}
+
+.yellowFont2{
+    color: rgb(244, 157, 13);
+}
+
+.redFont{
+    color: rgb(219, 29, 54);
+}
+
+.profileImage{
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.profileDetails{
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+}
+
+.clear{
+    clear: both;
+}
+
+.contentDiv{
+    height: auto;
+    border: none;
+    outline: none;
+    text-align: left;
+    color:#2e3134;
+    font-family: "Open Sans";
+    margin-top: 8px;
+    padding-left:1%;
+}
+
+
+.postBtn:disabled {
+    background-color: #4CAF50;
+    border: 1px solid #4CAF50;
+    color: #ccc;
+    cursor: not-allowed;
+    opacity: 0.4;
+}
+
+.mobileViewMenuDiv{
+    display: none;
+}
+
+.logoutLinkMobile{
+    display: none;
+}
+
 .profileDiv{
     width: 40vw;
     margin-left: auto;
@@ -105,9 +262,38 @@
     display: none;
 }
 
-/* Media Queries */
 
+.menuItemsDiv{
+    background-color:white;
+    padding-top: 10px;
+    padding-left: 10%;
+}
+
+.sideMenu{
+    padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 16px;
+  color: rgb(51, 50, 50);
+  display: block;
+}
+
+.sideMenu:hover{
+    /* background-image: -webkit-gradient( linear, left top, right top, color-stop(0, rgb(60, 154, 84)), color-stop(0.15, rgb(60, 154, 84)), color-stop(0.3, rgb(60, 154, 84)), color-stop(0.45, rgb(244, 157, 13)), color-stop(0.6, rgb(244, 157, 13)),color-stop(0.75, rgb(219, 29, 54)), color-stop(0.9, rgb(219, 29, 54)), color-stop(1, rgb(219, 29, 54)) );
+  background-image: gradient( linear, left top, right top, color-stop(0, rgb(60, 154, 84)), color-stop(0.15, rgb(60, 154, 84)), color-stop(0.3, rgb(60, 154, 84)), color-stop(0.45, rgb(244, 157, 13)), color-stop(0.6, rgb(244, 157, 13)),color-stop(0.75, rgb(219, 29, 54)), color-stop(0.9, rgb(219, 29, 54)), color-stop(1, rgb(219, 29, 54)) );
+  color:transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  font-weight: bold; */
+  color: gray;
+}
+
+.menuItemText{
+    padding-left: 15%;
+}
+
+/*Media Queries*/
 @media (max-width:600px){
+
     .NamesDiv{
         display: flex;
         flex-direction: column;
@@ -116,5 +302,51 @@
     .saveBtn{
         font-size: 14px;
         width: 50%;
+    }
+
+    .left{
+        display: none;
+    }
+    .right{
+        display: none;
+    }
+    .middle{
+        margin-left: 0%;
+        margin-right: 0%;
+    }
+    .logoutLink{
+        display: none;
+    }
+    .logoutLinkMobile{
+        display: block;
+        margin-left:90%;
+    }
+
+    .mobileViewMenuDiv{
+        display: flex;
+        bottom: 0;
+        position: fixed;
+        width: 100%;
+        justify-content: space-between;
+        background-color: white;
+        border-top: 1px solid #ccc;
+        padding: 2%;
+        border-top: 2px solid transparent;
+        border-image: -webkit-gradient( linear, left top, right top, color-stop(0, rgb(60, 154, 84)), color-stop(0.15, rgb(60, 154, 84)), color-stop(0.3, rgb(60, 154, 84)), color-stop(0.45, rgb(244, 157, 13)), color-stop(0.6, rgb(244, 157, 13)),color-stop(0.75, rgb(219, 29, 54)), color-stop(0.9, rgb(219, 29, 54)), color-stop(1, rgb(219, 29, 54)) );
+        border-image-slice: 1;
+    }
+
+    .postLearning{
+        width: 100%;
+    }
+
+    .header{
+        border-bottom: 1px solid #ccc;
+    }
+
+    .profileDiv{
+        width: 95vw;
+        margin-left: auto;
+        margin-right: auto;
     }
 }

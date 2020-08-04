@@ -131,17 +131,18 @@ class HomePage extends Component {
 
     menuItemClickHandler = (event) => {
         event.preventDefault();
-        var selectedMenuId=event.target.id;
-        if(selectedMenuId !== undefined){
-            var control = document.getElementById(selectedMenuId);
-            var previousHighlightedId = this.state.highlightedMenuId;
-            var prevControl = document.getElementById(previousHighlightedId);
-            if(selectedMenuId != previousHighlightedId){
-                prevControl.style.color='black';
-                control.style.color='green';
-                this.setState({highlightedMenuId:selectedMenuId});
-            }
-        }
+        // var selectedMenuId=event.target.id;
+        // if(selectedMenuId !== undefined){
+        //     var control = document.getElementById(selectedMenuId);
+        //     var previousHighlightedId = this.state.highlightedMenuId;
+        //     var prevControl = document.getElementById(previousHighlightedId);
+        //     if(selectedMenuId != previousHighlightedId){
+        //         prevControl.style.color='black';
+        //         control.style.color='green';
+        //         this.setState({highlightedMenuId:selectedMenuId});
+        //     }
+        // }
+        console.log("In MenuItemHandler");
     };
 
     postingCancelHandler = () => {
@@ -188,8 +189,11 @@ class HomePage extends Component {
         })
     }
 
+    logoutHandler = (event) =>{
+        
+    }
+
     render(){
-        console.log(this.state.imageMistake);
         var modal=null;
         if(this.state.postingNewPost){
             modal=<PostModal modalClose={this.postingCancelHandler} postingPost={this.state.postingNewPost} newPost={this.callBackToPostModal}/>
@@ -205,10 +209,12 @@ class HomePage extends Component {
                             width="100"
                             style={{position:'absolute'}} />
                         <input className={classes.searchInput} type="text" name="searchInp" placeholder="Search..." />   
-                        <a className={classes.logoutLink}>
+                        <a className={classes.logoutLink} 
+                            onClick={this.logoutHandler}>
                             <FontAwesomeIcon icon={faSignOutAlt} size="s"/>
                             Logout</a> 
-                        <a className={classes.logoutLinkMobile}>
+                        <a className={classes.logoutLinkMobile}
+                            onClick={this.logoutHandler}>
                             <FontAwesomeIcon icon={faSignOutAlt} size="lg"/>
                         </a> 
                         <div className={classes.container}>
@@ -345,11 +351,11 @@ class HomePage extends Component {
                     </div>
                     <div className={classes.mobileViewMenuDiv}>
                         <div style={{width:"95%",display:"flex",justifyContent:"space-between",bottom:"0"}}>
-                            <FontAwesomeIcon icon={faSave} color="gray" size="2x"/>
-                            <FontAwesomeIcon icon={faGraduationCap} color="gray" size="2x"/>
-                            <FontAwesomeIcon icon={faHome} color="gray" size="2x"/>
-                            <FontAwesomeIcon icon={faBell} color="gray" size="2x"/>
-                            <FontAwesomeIcon icon={faUser} color="gray" size="2x"/>
+                            <FontAwesomeIcon icon={faSave} color="gray" size="2x" onClick={this.menuItemClickHandler.bind(this)}/>
+                            <FontAwesomeIcon icon={faGraduationCap} color="gray" size="2x" onClick={this.menuItemClickHandler.bind(this)}/>
+                            <FontAwesomeIcon icon={faHome} color="gray" size="2x" onClick={this.menuItemClickHandler.bind(this)}/>
+                            <FontAwesomeIcon icon={faBell} color="gray" size="2x" onClick={this.menuItemClickHandler.bind(this)}/>
+                            <FontAwesomeIcon icon={faUser} color="gray" size="2x" onClick={this.menuItemClickHandler.bind(this)}/>
                         </div>
                     </div>
                 </div>

@@ -12,7 +12,7 @@ class App extends Component {
     return (
         <div>
           <Layout>
-            <HomePage/>
+            <ProfilePage/>
           </Layout>
         </div>
     );

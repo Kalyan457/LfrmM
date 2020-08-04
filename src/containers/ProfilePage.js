@@ -4,6 +4,9 @@ import Auxillary from '../hoc/Auxillary';
 import defaultProfilePic from '../assets/images/defaultProfilePic.png';
 import debounce from "lodash.debounce";
 import UserPosts from './UserPosts';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHome,faGraduationCap,faSave,faBell,faUser,faHashtag,faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import LfrmMImg from '../assets/images/LfrmM.png';
 
 class ProfilePage extends Component{
 
@@ -157,6 +160,22 @@ class ProfilePage extends Component{
         }
     };
 
+    menuItemClickHandler = (event) => {
+        event.preventDefault();
+        // var selectedMenuId=event.target.id;
+        // if(selectedMenuId !== undefined){
+        //     var control = document.getElementById(selectedMenuId);
+        //     var previousHighlightedId = this.state.highlightedMenuId;
+        //     var prevControl = document.getElementById(previousHighlightedId);
+        //     if(selectedMenuId != previousHighlightedId){
+        //         prevControl.style.color='black';
+        //         control.style.color='green';
+        //         this.setState({highlightedMenuId:selectedMenuId});
+        //     }
+        // }
+        console.log("In MenuItemHandler");
+    };
+
     saveChangesButtonHandler = (event) => {
         event.preventDefault();
         var firstName = document.forms['profileForm'].elements['fname'].value;
@@ -222,103 +241,225 @@ class ProfilePage extends Component{
         console.log(this.state.post);
         return(
             <Auxillary>
-                <div className={classes.profileDiv}>
-                    <div className={classes.profileImageDiv}>
-                        <img src={this.state.profileImage}  className={classes.profileImage} />
-                        <span onClick={()=>this.fileInput1.click()} style={{cursor:"pointer"}}>&#9998;</span>
+                <div className={classes.body}>
+                    <div className={classes.header}>
+                        <img 
+                            src={LfrmMImg} 
+                            alt="LfrmM Logo" 
+                            height="56"
+                            width="100"
+                            style={{position:'absolute'}} />
+                        <input className={classes.searchInput} type="text" name="searchInp" placeholder="Search..." />   
+                        <a className={classes.logoutLink} 
+                            onClick={this.logoutHandler}>
+                            <FontAwesomeIcon icon={faSignOutAlt} size="s"/>
+                            Logout</a> 
+                        <a className={classes.logoutLinkMobile}
+                            onClick={this.logoutHandler}>
+                            <FontAwesomeIcon icon={faSignOutAlt} size="lg"/>
+                        </a> 
+                        <div className={classes.container}>
+                            <div className={classes.left}>
+                                <div className={classes.menuItemsDiv}>
+                                    <a 
+                                        className={classes.sideMenu} 
+                                        href="#" 
+                                        id="menu_1" 
+                                        onClick={this.menuItemClickHandler.bind(this)}>
+                                        <div style={{width:"10px", height:"0px"}}>
+                                            <FontAwesomeIcon icon={faHome} size="s"/>
+                                        </div>
+                                        <span className={classes.menuItemText}>Home</span></a>
+                                </div>
+                                <div className={classes.menuItemsDiv}>
+                                    <a 
+                                        className={classes.sideMenu} 
+                                        href="#" 
+                                        id="menu_2" 
+                                        onClick={this.menuItemClickHandler.bind(this)}>
+                                        <div style={{width:"10px", height:"0px"}}>
+                                            <FontAwesomeIcon icon={faGraduationCap} size="s"/>
+                                        </div>
+                                        <span className={classes.menuItemText}>My Learnings</span></a>
+                                </div>
+                                <div className={classes.menuItemsDiv}>
+                                    <a 
+                                        className={classes.sideMenu} 
+                                        href="#" 
+                                        id="menu_3" 
+                                        onClick={this.menuItemClickHandler.bind(this)}>
+                                        <div style={{width:"10px", height:"0px"}}>
+                                            <FontAwesomeIcon icon={faSave} size="s"/>
+                                        </div>
+                                        <span className={classes.menuItemText}>Saved</span></a>
+                                </div>
+                                <div className={classes.menuItemsDiv}>
+                                    <a 
+                                        className={classes.sideMenu} 
+                                        href="#" 
+                                        id="menu_4" 
+                                        onClick={this.menuItemClickHandler.bind(this)}>
+                                        <div style={{width:"10px", height:"0px"}}>
+                                            <FontAwesomeIcon icon={faHashtag} size="s"/>
+                                        </div>
+                                        <span className={classes.menuItemText}>Interest 1</span></a>
+                                </div>
+                                <div className={classes.menuItemsDiv}>
+                                    <a 
+                                        className={classes.sideMenu} 
+                                        href="#" 
+                                        id="menu_5" 
+                                        onClick={this.menuItemClickHandler.bind(this)}>
+                                        <div style={{width:"10px", height:"0px"}}>
+                                            <FontAwesomeIcon icon={faHashtag} size="s"/>
+                                        </div>
+                                        <span className={classes.menuItemText}>Interest 2</span></a>
+                                </div>
+                                <div className={classes.menuItemsDiv}>
+                                    <a 
+                                        className={classes.sideMenu} 
+                                        href="#" 
+                                        id="menu_6" 
+                                        onClick={this.menuItemClickHandler.bind(this)}>
+                                        <div style={{width:"10px", height:"0px"}}>
+                                            <FontAwesomeIcon icon={faHashtag} size="s"/>
+                                        </div>
+                                        <span className={classes.menuItemText}>Interest 3</span></a>
+                                </div>
+                                <div className={classes.menuItemsDiv}>
+                                    <a 
+                                        className={classes.sideMenu} 
+                                        href="#" 
+                                        id="menu_7" 
+                                        onClick={this.menuItemClickHandler.bind(this)}>
+                                        <div style={{width:"10px", height:"0px"}}>
+                                            <FontAwesomeIcon icon={faBell} size="s"/>
+                                        </div>
+                                        <span className={classes.menuItemText}>Notifications</span></a>
+                                </div>
+                                <div className={classes.menuItemsDiv}>
+                                    <a 
+                                        className={classes.sideMenu} 
+                                        href="#" 
+                                        id="menu_8"
+                                        onClick={this.menuItemClickHandler.bind(this)}>
+                                        <div style={{width:"10px", height:"0px"}}>
+                                            <FontAwesomeIcon icon={faUser} size="s"/>
+                                        </div>
+                                        <span className={classes.menuItemText}>Profile</span></a>
+                                </div> 
+                            </div>
+                        </div>
                     </div>
-                    <input 
-                        type="file" 
-                        style={{display:'none'}}
-                        onChange={this.fileSelectedHandlerProfileImage} 
-                        accept="image/*"
-                        ref={fileInput1 => this.fileInput1 = fileInput1} />
-                    <div className={classes.choiceBtnsDiv}>
-                        <button className={classes.choiceBtns} onClick={this.showPostsHandler}>Posts</button>
-                        <button className={classes.choiceBtns} onClick={this.showInterestsHandler}>Interests</button>
-                        <button className={classes.choiceBtns} onClick={this.showProfileHandler}>Profile</button>
-                        <hr style={{marginTop:"0px"}}></hr>
+                    <div className={classes.middle}>
+                        <div className={classes.profileDiv}>
+                            <div className={classes.profileImageDiv}>
+                                <img src={this.state.profileImage}  className={classes.profileImage} />
+                                <span onClick={()=>this.fileInput1.click()} style={{cursor:"pointer"}}>&#9998;</span>
+                            </div>
+                            <input 
+                                type="file" 
+                                style={{display:'none'}}
+                                onChange={this.fileSelectedHandlerProfileImage} 
+                                accept="image/*"
+                                ref={fileInput1 => this.fileInput1 = fileInput1} />
+                            <div className={classes.choiceBtnsDiv}>
+                                <button className={classes.choiceBtns} onClick={this.showPostsHandler}>Posts</button>
+                                <button className={classes.choiceBtns} onClick={this.showInterestsHandler}>Interests</button>
+                                <button className={classes.choiceBtns} onClick={this.showProfileHandler}>Profile</button>
+                                <hr style={{marginTop:"0px"}}></hr>
+                            </div>
+                            <form name="profileForm" id="profile" className={classes.profile}>
+                                <div className={classes.NamesDiv}>
+                                    <div style={{marginBottom:"2%"}}>
+                                        <input className={classes.input} id="fname" disabled type="text" name="fname" /> 
+                                        <span onClick={this.editFNameHandler} style={{cursor:"pointer"}}>&#9998;</span> 
+                                    </div>
+                                    <div>
+                                        <input className={classes.input} id="lname" disabled type="text" name="lname" /> 
+                                        <span onClick={this.editLNameHandler} style={{cursor:"pointer"}}>&#9998;</span> 
+                                    </div>
+                                </div>
+                                <div className={classes.NamesDiv}>
+                                    <div style={{marginBottom:"2%"}}>
+                                        <input className={classes.input} id="email" disabled type="email" name="email" />
+                                        &nbsp;&nbsp;&nbsp;&nbsp;
+                                    </div>
+                                    <div>
+                                        <input className={classes.input} type="password" name="password" placeholder="Change Password" />
+                                        &nbsp;&nbsp;&nbsp;&nbsp;
+                                    </div>
+                                </div>
+                                <div className={classes.NamesDiv}>
+                                    <div style={{marginBottom:"2%"}}>
+                                        <input className={classes.input} id="designation" disabled type="text" name="designation"/> 
+                                        <span onClick={this.editDesignationHandler} style={{cursor:"pointer"}}>&#9998;</span>  
+                                    </div>
+                                    <div>
+                                        <input className={classes.input} id="institute" disabled type="text" name="institute" /> 
+                                        <span onClick={this.editInstituteHandler} style={{cursor:"pointer"}}>&#9998;</span> 
+                                    </div>
+                                </div>
+                                <button 
+                                        className={classes.saveBtn}
+                                        onClick={this.profileSaveButtonHandler}>Save</button>
+                            </form>
+                            <div id="interests" className={classes.interests}>
+                                <div className={classes.interestsDiv}>
+                                    <button 
+                                        type="button"
+                                        className={classes.interestButton} 
+                                        value="1" 
+                                        id="interest_btn_1"
+                                        onClick={this.interestBtnHandler.bind(this)}>Coding</button>
+                                    <button 
+                                        type="button"
+                                        className={classes.interestButton} 
+                                        value="2" 
+                                        id="interest_btn_2"
+                                        onClick={this.interestBtnHandler.bind(this)}>Algorithms</button>
+                                    <button 
+                                        type="button"
+                                        className={classes.interestButton} 
+                                        value="3" 
+                                        id="interest_btn_3"
+                                        onClick={this.interestBtnHandler.bind(this)}>Web Development</button>
+                                    <button 
+                                        type="button"
+                                        className={classes.interestButton} 
+                                        value="4" 
+                                        id="interest_btn_4"
+                                        onClick={this.interestBtnHandler.bind(this)}>Machine Learning</button>
+                                    <button 
+                                        type="button"
+                                        className={classes.interestButton} 
+                                        value="5" 
+                                        id="interest_btn_5"
+                                        onClick={this.interestBtnHandler.bind(this)}>Cyber Security</button>
+                                    <button 
+                                        type="button"
+                                        className={classes.interestButton} 
+                                        value="6" 
+                                        id="interest_btn_6"
+                                        onClick={this.interestBtnHandler.bind(this)}>Cloud Computing</button>
+                                    <button 
+                                        className={classes.saveBtn}
+                                        onClick={this.interestSaveButtonHandler}>Save</button> 
+                                </div>
+                            </div>
+                            <div id="posts">
+                                { this.state.post.map((eachPost) => (<UserPosts key={eachPost.postId} postData={eachPost} />))}
+                            </div>
+                        </div>
                     </div>
-                    <form name="profileForm" id="profile" className={classes.profile}>
-                        <div className={classes.NamesDiv}>
-                            <div style={{marginBottom:"2%"}}>
-                                <input className={classes.input} id="fname" disabled type="text" name="fname" /> 
-                                <span onClick={this.editFNameHandler} style={{cursor:"pointer"}}>&#9998;</span> 
-                            </div>
-                            <div>
-                                <input className={classes.input} id="lname" disabled type="text" name="lname" /> 
-                                <span onClick={this.editLNameHandler} style={{cursor:"pointer"}}>&#9998;</span> 
-                            </div>
+                    <div className={classes.mobileViewMenuDiv}>
+                        <div style={{width:"95%",display:"flex",justifyContent:"space-between",bottom:"0"}}>
+                            <FontAwesomeIcon icon={faSave} color="gray" size="2x" onClick={this.menuItemClickHandler.bind(this)}/>
+                            <FontAwesomeIcon icon={faGraduationCap} color="gray" size="2x" onClick={this.menuItemClickHandler.bind(this)}/>
+                            <FontAwesomeIcon icon={faHome} color="gray" size="2x" onClick={this.menuItemClickHandler.bind(this)}/>
+                            <FontAwesomeIcon icon={faBell} color="gray" size="2x" onClick={this.menuItemClickHandler.bind(this)}/>
+                            <FontAwesomeIcon icon={faUser} color="gray" size="2x" onClick={this.menuItemClickHandler.bind(this)}/>
                         </div>
-                        <div className={classes.NamesDiv}>
-                            <div style={{marginBottom:"2%"}}>
-                                <input className={classes.input} id="email" disabled type="email" name="email" />
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                            </div>
-                            <div>
-                                <input className={classes.input} type="password" name="password" placeholder="Change Password" />
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                            </div>
-                        </div>
-                        <div className={classes.NamesDiv}>
-                            <div style={{marginBottom:"2%"}}>
-                                <input className={classes.input} id="designation" disabled type="text" name="designation"/> 
-                                <span onClick={this.editDesignationHandler} style={{cursor:"pointer"}}>&#9998;</span>  
-                            </div>
-                            <div>
-                                <input className={classes.input} id="institute" disabled type="text" name="institute" /> 
-                                <span onClick={this.editInstituteHandler} style={{cursor:"pointer"}}>&#9998;</span> 
-                            </div>
-                        </div>
-                        <button 
-                                className={classes.saveBtn}
-                                onClick={this.profileSaveButtonHandler}>Save</button>
-                    </form>
-                    <div id="interests" className={classes.interests}>
-                        <div className={classes.interestsDiv}>
-                            <button 
-                                type="button"
-                                className={classes.interestButton} 
-                                value="1" 
-                                id="interest_btn_1"
-                                onClick={this.interestBtnHandler.bind(this)}>Coding</button>
-                            <button 
-                                type="button"
-                                className={classes.interestButton} 
-                                value="2" 
-                                id="interest_btn_2"
-                                onClick={this.interestBtnHandler.bind(this)}>Algorithms</button>
-                            <button 
-                                type="button"
-                                className={classes.interestButton} 
-                                value="3" 
-                                id="interest_btn_3"
-                                onClick={this.interestBtnHandler.bind(this)}>Web Development</button>
-                            <button 
-                                type="button"
-                                className={classes.interestButton} 
-                                value="4" 
-                                id="interest_btn_4"
-                                onClick={this.interestBtnHandler.bind(this)}>Machine Learning</button>
-                            <button 
-                                type="button"
-                                className={classes.interestButton} 
-                                value="5" 
-                                id="interest_btn_5"
-                                onClick={this.interestBtnHandler.bind(this)}>Cyber Security</button>
-                            <button 
-                                type="button"
-                                className={classes.interestButton} 
-                                value="6" 
-                                id="interest_btn_6"
-                                onClick={this.interestBtnHandler.bind(this)}>Cloud Computing</button>
-                            <button 
-                                className={classes.saveBtn}
-                                onClick={this.interestSaveButtonHandler}>Save</button> 
-                        </div>
-                    </div>
-                    <div id="posts">
-                    { this.state.post.map((eachPost) => (<UserPosts key={eachPost.postId} postData={eachPost} />))}
                     </div>
                 </div>
             </Auxillary>
